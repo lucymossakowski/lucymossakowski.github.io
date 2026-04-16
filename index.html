@@ -1,19 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <title>Lucy Mossakowski</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucy Mossakowski</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwindcss.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Avenir Next"', 'Avenir', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'] },
+          colors: {
+            brand: 'var(--brand)',
+            surface: 'var(--surface)',
+            ink: 'var(--ink)',
+            'ink-light': 'var(--ink-light)',
+            'ink-muted': 'var(--ink-muted)',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .animate-slide-up { animation: slide-up 0.3s ease-out; }
+    @media (prefers-reduced-motion: reduce) { .animate-slide-up { animation: none; } }
+    @media print {
+      .project-card { display: none !important; }
+      [id^="modal-"] { display: block !important; position: static !important; z-index: auto !important; }
+      [id^="modal-"] > div:first-child { display: none !important; }
+      [id^="modal-"] > div:last-child { position: static !important; border-radius: 0 !important; overflow: visible !important; animation: none !important; }
+      [id^="modal-"] .sticky { position: static !important; border: none !important; }
+      [id^="modal-"] button[aria-label="Close"] { display: none !important; }
+      [id^="modal-"] .max-w-3xl { max-width: 100% !important; padding: 1rem 0 !important; }
+      .print-case-study-divider { border-top: 1px solid #ccc; margin: 2rem 0; }
+      #password-gate { display: none !important; }
+    }
+  </style>
 </head>
+<body class="bg-surface text-ink font-sans antialiased">
 
-<body>
-    <div>
-        <canvas></canvas>
+  <!-- Password gate -->
+  <div id="password-gate" class="fixed inset-0 z-[200] flex items-center justify-center px-6" style="background:var(--surface);">
+    <div class="text-center max-w-sm w-full">
+      <h1 class="text-2xl font-bold mb-2">Lucy Mossakowski</h1>
+      <p class="text-ink-muted text-sm mb-6">This portfolio is password protected.</p>
+      <form onsubmit="return checkPassword(event)" class="flex gap-2">
+        <input id="pw-input" type="password" placeholder="Enter password" autocomplete="off" class="flex-1 px-3 py-2 text-sm border border-ink/10 rounded-lg bg-transparent text-ink placeholder:text-ink-muted focus:outline-none focus:border-ink/30">
+        <button type="submit" class="btn-outline">Enter</button>
+      </form>
+      <p id="pw-error" class="text-sm mt-3 hidden" style="color:#DC2626;">Incorrect password</p>
     </div>
+  </div>
 
-    <!-- JavaScript -->
-    <script src="canvas.js"></script>
+  <div id="site-content" style="display:none;">
+
+  <!-- Skip to content -->
+  <a href="#work" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:px-4 focus:py-2 focus:bg-brand focus:text-white focus:rounded-lg">Skip to content</a>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur border-b border-ink/5 px-6" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-14">
+      <a href="index.html" class="text-sm font-semibold tracking-tight text-ink">Lucy Mossakowski</a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-ink-muted">
+        <a href="index.html" class="nav-link text-ink" aria-current="page">All Work</a>
+        <a href="play.html" class="nav-link hover:text-ink transition">Some Play</a>
+        <a href="cv.html" class="nav-link hover:text-ink transition">The Human Behind It</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+      </div>
+      <div class="flex md:hidden items-center gap-3">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+        <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-14 z-40 px-6 pt-8" style="background:var(--surface);">
+    <div class="flex flex-col gap-6 text-lg text-ink-muted">
+      <a href="index.html" class="nav-link text-ink" aria-current="page">All Work</a>
+      <a href="play.html" class="nav-link hover:text-ink transition">Some Play</a>
+      <a href="cv.html" class="nav-link hover:text-ink transition">The Human Behind It</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center px-6">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-ink">I make intricate systems feel simple and intuitive.</h1>
+      <p class="mt-6 text-xl text-ink-light max-w-xl leading-relaxed">Designing products that simplify complex operational workflows — grounded in research, design thinking, and continuous iteration.</p>
+      <div class="flex justify-center md:justify-start items-center gap-4 mt-10">
+        <a href="#work" class="inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline">See the work ↓</a>
+        <button onclick="window.print()" class="no-print btn-outline">Download PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Work -->
+  <section id="work" class="px-6 pb-10">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Project 1: Payments -->
+      <div class="project-card grid md:grid-cols-2 gap-12 items-center mb-24 cursor-pointer group" onclick="openModal('modal-3')" role="button" tabindex="0" aria-label="View Payments case study" onkeydown="if(event.key==='Enter')openModal('modal-3')">
+        <div class="rounded-2xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
+          <img loading="lazy" src="images/payments-hero.png" alt="Payments project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
+        </div>
+        <div>
+          <div class="flex gap-2 mb-4">
+            <span class="tag" style="background:#6B46C114;color:#6B46C1;">User Research</span>
+            <span class="tag" style="background:#0068C814;color:#0068C8;">Information Architecture</span>
+            <span class="tag" style="background:#DC262614;color:#DC2626;">Design Thinking</span>
+          </div>
+          <h3 class="text-2xl font-bold">Payments</h3>
+          <p class="text-ink-light mt-3 leading-relaxed">Redesigning an internal tool used by game teams, release operations and customer support — simplifying complex workflows and reducing reliance on external teams.</p>
+          <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
+        </div>
+      </div>
+
+      <!-- Project 2: LocManager -->
+      <div class="project-card grid md:grid-cols-2 gap-12 items-center cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter')openModal('modal-2')">
+        <div class="md:order-2 rounded-2xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
+          <img loading="lazy" src="images/locmanager-hero.png" alt="LocManager project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
+        </div>
+        <div class="md:order-1">
+          <div class="flex gap-2 mb-4">
+            <span class="tag" style="background:#0068C814;color:#0068C8;">Prototypes</span>
+            <span class="tag" style="background:#05966914;color:#059669;">Cross-Functional Collaboration</span>
+            <span class="tag" style="background:#DC262614;color:#DC2626;">Data-Driven Iteration</span>
+          </div>
+          <h3 class="text-2xl font-bold">LocManager</h3>
+          <p class="text-ink-light mt-3 leading-relaxed">Inheriting an internal localisation tool and iterating on the design — resolving UX issues, improving workflows, and consolidating multiple tools into one platform.</p>
+          <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal 2: LocManager -->
+  <div id="modal-2" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="LocManager case study">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-2')"></div>
+    <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-2xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
+      <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between" style="background:var(--surface);">
+        <h2 class="font-semibold">LocManager</h2>
+        <button onclick="closeModal('modal-2')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
+      </div>
+      <div class="max-w-3xl mx-auto px-6 py-12">
+        <div class="rounded-xl overflow-hidden bg-ink/5 mb-12">
+          <img loading="lazy" src="images/locmanager-hero.png" alt="Overview of the LocManager interface" class="w-full">
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">The Problem</h3>
+        <p class="text-ink-light leading-relaxed mb-10">LocManager is Zynga's internal localisation tool that enables producers to manage the process of sending translation requests from game teams to external translation vendors, then push translated content back. I joined the project just before general access release, inheriting a tool with several UX issues: flows that didn't behave as expected (e.g. schedules updating before save was pressed), misplaced buttons, an overly complex status dropdown, excessive visual nesting, and a notification settings feature with high cognitive load.</p>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Process</h3>
+        <div class="grid sm:grid-cols-3 gap-6 mb-6">
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Audit</p><p class="text-sm text-ink-light mt-1">Conducted a core review of the existing interface, identifying awkward flows, misplaced actions, confusing status options, and areas of unnecessary complexity. Also analysed the Lockit tool, which is SocialPoint's legacy tool and being replaced by LocManager, to understand feature parity requirements.</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">2. Iterate</p><p class="text-sm text-ink-light mt-1">Downloaded the codebase from the GitHub repository and worked through issues via prototyping, using AI to accelerate exploration. Shared results continuously with engineering to address the identified problems.</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Extend</p><p class="text-sm text-ink-light mt-1">Currently working on post-general-access features focused on feature parity with Lockit, consolidating all teams onto a single platform. We are exploring how AI can be integrated, particularly in the context of content management.</p></div>
+        </div>
+        <div class="rounded-xl overflow-hidden bg-ink/5 mb-10">
+          <img loading="lazy" src="images/locmanager-analysis.png" alt="Lockit analysis and feature parity comparison" class="w-full">
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Solution</h3>
+        <p class="text-ink-light leading-relaxed mb-6">Addressed the core usability issues: corrected save behaviour so changes only apply when explicitly confirmed, repositioned the save button to sit where users expect it, simplified the status dropdown to reduce confusion, reduced visual nesting (boxes inside boxes), and redesigned the notification settings to lower cognitive load.</p>
+
+        <p class="text-xs font-semibold text-ink-muted mb-3">Status dropdown</p>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-status-before.png" alt="Status dropdown before — too many confusing options" class="w-full"></div>
+          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-status-after.png" alt="Status dropdown after — simplified and clearer" class="w-full"></div>
+        </div>
+
+        <p class="text-xs font-semibold text-ink-muted mb-3">Notification settings</p>
+        <div class="grid sm:grid-cols-2 gap-4 mb-10">
+          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-notifications-before.png" alt="Notification settings before — high cognitive load" class="w-full"></div>
+          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-notifications-after.png" alt="Notification settings after — redesigned for clarity" class="w-full"></div>
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Outcome</h3>
+        <div class="grid sm:grid-cols-3 gap-6 mb-10">
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Improved usability</p><p class="text-sm text-ink-light mt-1">Core UX issues resolved before general access</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Single platform</p><p class="text-sm text-ink-light mt-1">Working towards consolidating Lockit and LocManager into one tool for all teams</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">AI exploration</p><p class="text-sm text-ink-light mt-1">Investigating AI integration for content management workflows</p></div>
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Reflection</h3>
+        <p class="text-ink-light leading-relaxed">Coming into a project late without handover means I inherited decisions I didn't make and was lacking context for. I tackled this through intensive catch ups with the team to build up my understanding of the tool and user needs from scratch. The challenge was not starting from scratch however, but identifying what matters most and making targeted improvements without disrupting what's already working. Prototyping directly in code (with AI assistance) also proved far more effective for this project than static mockups, because it let me share working examples with engineering rather than abstract specifications.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Payments -->
+  <div id="modal-3" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="Payments case study">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-3')"></div>
+    <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-2xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
+      <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between" style="background:var(--surface);">
+        <h2 class="font-semibold">Payments</h2>
+        <button onclick="closeModal('modal-3')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
+      </div>
+      <div class="max-w-3xl mx-auto px-6 py-12">
+        <div class="rounded-xl overflow-hidden bg-ink/5 mb-12">
+          <img loading="lazy" src="images/payments-hero.png" alt="Overview of the redesigned Payments Admin UI" class="w-full">
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">The Problem</h3>
+        <p class="text-ink-light leading-relaxed mb-4">Zynga's Payments Admin tool is used by game teams, release operations and customer support, including the player VIP team to manage in-game catalogue products, export to storefronts, track player transactions, and manage blocked players. The existing tool had grown haphazardly over time: it was difficult to use, suffered from poor performance, and created a heavy reliance on external teams for tasks users should have been able to complete independently.</p>
+        <p class="text-ink-light leading-relaxed mb-10">Phase 1 addressed the catalogue and localisation pages. The ongoing work continues migrating the remaining pages to a redesigned UI.</p>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Process</h3>
+        <div class="grid sm:grid-cols-3 gap-6 mb-6">
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Research</p><p class="text-sm text-ink-light mt-1">Conducted 20+ user interviews across game teams, release operations, customer support, and the payments engineering team. Captured qualitative feedback to establish core user journeys, understand performance pain points, and determine user needs.</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">2. Design</p><p class="text-sm text-ink-light mt-1">Translated research findings into design requirements. Set up wireframes addressing key issues: simplified table layouts, stacked search/sort/filter, auto-fill input fields, clearer publish flows, and improved export functionality. Iterated continuously with engineering.</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Iterate</p><p class="text-sm text-ink-light mt-1">Working through the tool tab by tab — catalogue and localisation complete, transactions in progress, with regional pricing templates, grant retry, and blocked players to follow. Each phase follows the same research-first approach.</p></div>
+        </div>
+        <div class="rounded-xl bg-ink/[0.03] p-6 mb-10">
+          <p class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-4">What users said</p>
+          <div class="space-y-4">
+            <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;The publish modal is difficult to understand due to existing design choices - bullet points look like checkboxes.&rdquo;</blockquote>
+            <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;The overall process is confusing. There is no set process, so new members have no official learning material to rely on.&rdquo;</blockquote>
+            <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;Exporting for Apple fails frequently when more than five catalogue items are selected. The only workaround is to keep attempting the export - usually within five tries it works.&rdquo;</blockquote>
+            <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;Free transactions cluttering the list makes finding actual purchases difficult. There is no filtering on the main tab - no filtering by store, vendor, status, amount, or date range.&rdquo;</blockquote>
+          </div>
+          <p class="text-xs text-ink-muted mt-4">From 20+ interviews across game teams, release operations, customer support, and the payments engineering team</p>
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Solution</h3>
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/payments-before.png" alt="Old Payments Admin catalogue UI" class="w-full"></div>
+          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/payments-after.png" alt="Redesigned Payments Admin catalogue UI" class="w-full"></div>
+        </div>
+        <p class="text-ink-light leading-relaxed mb-4">The redesigned Payments Admin simplifies complex workflows that previously required external support. Key improvements include a cleaner catalogue table with customisable columns, auto-filled product fields to reduce manual input, a more intuitive publish flow that reduces user anxiety, and streamlines the export functionality. A direct link to the Slack support channel in the portal header helps prevent reliance on the release operations team for routine tasks.</p>
+        <div class="rounded-xl overflow-hidden bg-ink/5 mb-10">
+          <img loading="lazy" src="images/payments-detail.png" alt="Detail of a specific design decision in the Payments redesign" class="w-full">
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Outcome</h3>
+        <div class="grid sm:grid-cols-3 gap-6 mb-10">
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Cleaner UI</p><p class="text-sm text-ink-light mt-1">Simplified flows reduce cognitive load for all user types</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Reduced reliance</p><p class="text-sm text-ink-light mt-1">Game teams can complete tasks independently, reducing dependency on release operations</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Ongoing</p><p class="text-sm text-ink-light mt-1">Phased migration continues with the same research-led approach for each remaining tab</p></div>
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Reflection</h3>
+        <p class="text-ink-light leading-relaxed">This project reinforced how important it is to let research lead the design direction rather than assumptions. The user base turned out to be far more diverse than expected, from VIP account managers checking a single transaction, to release operations exporting hundreds of products at a time, and each group interacts with the tool in fundamentally different ways. If I were starting again, I'd push earlier for role-based access and tailored views rather than a one-size-fits-all interface.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[id^="modal-"]').forEach(function(m) {
+          m.classList.add('hidden');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="border-t border-ink/5 py-8 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs text-ink-muted">
+      <div class="flex gap-4">
+        <a href="mailto:lucymossa@gmail.com" class="hover:text-ink hover:underline transition">lucymossa@gmail.com</a>
+        <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="hover:text-ink hover:underline transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <span>Built with Tailwind CSS & Amazon Q</span>
+    </div>
+  </footer>
+
+  </div><!-- /site-content -->
+
+  <script>
+    // Password gate (SHA-256 with salt)
+    var SALT = '852b229267504da2d39ffcc37e5b2fc6';
+    var HASH = '2fb809dd8097ba5fac28c02ee48355fbf079c3b386ad2e124f0e301d3f220a2e';
+    if (sessionStorage.getItem('portfolio-auth') === HASH) {
+      document.getElementById('password-gate').style.display = 'none';
+      document.getElementById('site-content').style.display = '';
+    }
+    async function checkPassword(e) {
+      e.preventDefault();
+      var pw = document.getElementById('pw-input').value;
+      var data = new TextEncoder().encode(SALT + pw);
+      var buf = await crypto.subtle.digest('SHA-256', data);
+      var hex = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+      if (hex === HASH) {
+        sessionStorage.setItem('portfolio-auth', HASH);
+        document.getElementById('password-gate').style.display = 'none';
+        document.getElementById('site-content').style.display = '';
+      } else {
+        document.getElementById('pw-error').classList.remove('hidden');
+        document.getElementById('pw-input').value = '';
+        document.getElementById('pw-input').focus();
+      }
+    }
+  </script>
 
 </body>
-</html> 
+</html>

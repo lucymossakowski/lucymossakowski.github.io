@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucy Mossakowski</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwindcss.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Avenir Next"', 'Avenir', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'] },
+          colors: {
+            brand: 'var(--brand)',
+            surface: 'var(--surface)',
+            ink: 'var(--ink)',
+            'ink-light': 'var(--ink-light)',
+            'ink-muted': 'var(--ink-muted)',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #game-canvas { cursor: crosshair; }
+  </style>
+</head>
+<body class="bg-surface text-ink font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Skip to content -->
+  <a href="#game" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:px-4 focus:py-2 focus:bg-brand focus:text-white focus:rounded-lg">Skip to content</a>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur border-b border-ink/5 px-6" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-14">
+      <a href="index.html" class="text-sm font-semibold tracking-tight text-ink">Lucy Mossakowski</a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-ink-muted">
+        <a href="index.html" class="nav-link hover:text-ink transition">All Work</a>
+        <a href="play.html" class="nav-link text-ink" aria-current="page">Some Play</a>
+        <a href="cv.html" class="nav-link hover:text-ink transition">The Human Behind It</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+      </div>
+      <div class="flex md:hidden items-center gap-3">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+        <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-14 z-40 px-6 pt-8" style="background:var(--surface);">
+    <div class="flex flex-col gap-6 text-lg text-ink-muted">
+      <a href="index.html" class="nav-link hover:text-ink transition">All Work</a>
+      <a href="play.html" class="nav-link text-ink" aria-current="page">Some Play</a>
+      <a href="cv.html" class="nav-link hover:text-ink transition">The Human Behind It</a>
+    </div>
+  </div>
+
+  <!-- Desktop-only message -->
+  <section class="lg:hidden flex items-center justify-center px-6" style="min-height:calc(100vh - 3.5rem);">
+    <div class="text-center">
+      <p class="text-4xl mb-4">🖥️</p>
+      <h2 class="text-xl font-bold mb-2">Best on desktop</h2>
+      <p class="text-ink-muted text-sm">This game needs a mouse to play. Visit on a desktop browser to try it out.</p>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <section id="game" class="hidden lg:block pt-24 pb-10 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-end justify-between mb-6">
+        <p class="text-ink-light text-lg font-medium">Find the odd one out. How many levels can you clear in 60 seconds?</p>
+        <div class="flex items-center gap-6 text-sm" id="hud" style="opacity:0; transition: opacity 0.3s;">
+          <div class="text-right">
+            <span class="text-ink-muted">Time </span>
+            <span class="font-bold tabular-nums" id="timer">60</span>
+          </div>
+          <div class="text-right">
+            <span class="text-ink-muted">Level </span>
+            <span class="font-bold tabular-nums" id="counter">1</span>
+          </div>
+          <div class="text-right">
+            <span class="text-ink-muted">Best </span>
+            <span class="font-bold tabular-nums" id="best-level">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden relative" style="height: 600px; background: #1A1A1A;">
+        <div id="overlay-idle" class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+          <h3 class="text-2xl font-bold text-white">Click to begin</h3>
+        </div>
+        <div id="overlay-won" class="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none hidden">
+          <p class="text-lg text-[#FFFFE6] mb-2">You reached level <span id="final-time"></span></p>
+          <h3 class="text-2xl font-bold text-white">Time's up! Click to play again</h3>
+        </div>
+        <div id="overlay-level" class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none hidden">
+          <h3 class="text-2xl font-bold text-white" id="level-flash"></h3>
+        </div>
+        <canvas id="game-canvas" style="display:block; width:100%; height:100%;" aria-label="Dot Hunter game — find the odd dot out"></canvas>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-ink/5 py-8 px-6 mt-auto">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs text-ink-muted">
+      <div class="flex gap-4">
+        <a href="mailto:lucymossa@gmail.com" class="hover:text-ink hover:underline transition">lucymossa@gmail.com</a>
+        <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="hover:text-ink hover:underline transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <span>Built with Tailwind CSS & Amazon Q</span>
+    </div>
+  </footer>
+
+  <script>
+  (function() {
+    var canvas = document.getElementById('game-canvas');
+    var ctx = canvas.getContext('2d');
+    var container = canvas.parentElement;
+    var counterEl = document.getElementById('counter');
+    var bestLevelEl = document.getElementById('best-level');
+    var timerEl = document.getElementById('timer');
+    var hudEl = document.getElementById('hud');
+
+    var hudEl = document.getElementById('hud');
+    var overlayIdle = document.getElementById('overlay-idle');
+    var overlayWon = document.getElementById('overlay-won');
+    var overlayLevel = document.getElementById('overlay-level');
+    var finalTimeEl = document.getElementById('final-time');
+    var levelFlashEl = document.getElementById('level-flash');
+
+    var DOT_COUNT = 350;
+    var baseColours = ['#FFFFFF', '#808080'];
+    var dots = [];
+    var particles = [];
+    var gameState = 'idle';
+    var level = 1;
+    var bestLevel = localStorage.getItem('dot-hunter-best-level') ? parseInt(localStorage.getItem('dot-hunter-best-level')) : null;
+    var timeLeft = 60;
+    var timerInterval = null;
+    var GAME_DURATION = 60;
+
+    if (bestLevel) bestLevelEl.textContent = bestLevel;
+
+
+    function resize() {
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function Dot(x, y, dx, dy, radius, colour) {
+      this.x = x;
+      this.y = y;
+      this.dx = dx;
+      this.dy = dy;
+      this.radius = radius;
+      this.baseColour = colour;
+      this.colour = colour;
+      this.opacity = 0.6;
+      this.blur = 0;
+      this.isTarget = false;
+      this.pulsePhase = Math.random() * Math.PI * 2;
+    }
+
+    Dot.prototype.update = function(mouse) {
+      var w = canvas.width, h = canvas.height;
+      if (this.x + this.radius > w || this.x - this.radius < 0) this.dx = -this.dx;
+      if (this.y + this.radius > h || this.y - this.radius < 0) this.dy = -this.dy;
+      this.x += this.dx;
+      this.y += this.dy;
+
+      if (this.isTarget) {
+        this.pulsePhase += 0.05;
+        var pulse = Math.sin(this.pulsePhase);
+        this.opacity = 0.8;
+        this.colour = '#FFFFFF';
+        this.blur = 0;
+        this.radius = 3.5 + pulse * 0.5;
+        return;
+      }
+
+      if (mouse.x !== undefined) {
+        var ddx = this.x - mouse.x;
+        var ddy = this.y - mouse.y;
+        if (ddx < 115 && ddx > -115 && ddy < 115 && ddy > -115) {
+          var angle = Math.atan2(ddy, ddx);
+          var dist = 86 / Math.sqrt(ddx * ddx + ddy * ddy);
+          this.x += Math.cos(angle) * dist;
+          this.y += Math.sin(angle) * dist;
+          this.blur = 10;
+          this.opacity = 1;
+          this.colour = '#FFFFE6';
+        } else {
+          this.blur = 0;
+          this.opacity = 0.6;
+          this.colour = this.baseColour;
+        }
+      } else {
+        this.blur = 0;
+        this.opacity = 0.6;
+        this.colour = this.baseColour;
+      }
+    };
+
+    Dot.prototype.draw = function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.globalAlpha = this.opacity;
+      ctx.shadowColor = '#FFFFE6';
+      ctx.shadowBlur = this.blur;
+      ctx.fillStyle = this.colour;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    };
+
+    function Particle(x, y) {
+      var angle = Math.random() * Math.PI * 2;
+      var speed = Math.random() * 3 + 1;
+      this.x = x;
+      this.y = y;
+      this.dx = Math.cos(angle) * speed;
+      this.dy = Math.sin(angle) * speed;
+      this.life = 1;
+      this.radius = Math.random() * 2 + 1;
+    }
+
+    Particle.prototype.update = function() {
+      this.x += this.dx;
+      this.y += this.dy;
+      this.life -= 0.03;
+    };
+
+    Particle.prototype.draw = function() {
+      if (this.life <= 0) return;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.globalAlpha = this.life;
+      ctx.fillStyle = '#FFFFE6';
+      ctx.fill();
+    };
+
+    function spawnBurst(x, y) {
+      for (var i = 0; i < 12; i++) particles.push(new Particle(x, y));
+    }
+
+    function createDots() {
+      dots = [];
+      for (var i = 0; i < DOT_COUNT; i++) {
+        var r = Math.random() * 3;
+        dots.push(new Dot(
+          Math.random() * (canvas.width - r * 2) + r,
+          Math.random() * (canvas.height - r * 2) + r,
+          (Math.random() - 0.5) * 0.5,
+          (Math.random() - 0.5) * 0.5,
+          r,
+          baseColours[Math.floor(Math.random() * baseColours.length)]
+        ));
+      }
+    }
+
+    function assignTarget() {
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].isTarget = false;
+        dots[i].colour = dots[i].baseColour;
+        dots[i].opacity = 0.6;
+        dots[i].blur = 0;
+      }
+      var idx = Math.floor(Math.random() * dots.length);
+      dots[idx].isTarget = true;
+      dots[idx].radius = 5;
+      dots[idx].pulsePhase = Math.random() * Math.PI * 2;
+    }
+
+    var mouse = { x: undefined, y: undefined };
+
+    canvas.addEventListener('mousemove', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.addEventListener('mouseleave', function() {
+      mouse.x = undefined;
+      mouse.y = undefined;
+    });
+
+    canvas.addEventListener('click', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      var mx = e.clientX - rect.left;
+      var my = e.clientY - rect.top;
+
+      if (gameState === 'idle' || gameState === 'won') {
+        level = 1;
+        timeLeft = GAME_DURATION;
+        timerEl.textContent = timeLeft;
+        assignTarget();
+        particles = [];
+        gameState = 'playing';
+        counterEl.textContent = level;
+        hudEl.style.opacity = '1';
+        overlayIdle.classList.add('hidden');
+        overlayWon.classList.add('hidden');
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(function() {
+          timeLeft--;
+          timerEl.textContent = timeLeft;
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            gameState = 'won';
+            finalTimeEl.textContent = level;
+            overlayWon.classList.remove('hidden');
+            for (var j = 0; j < dots.length; j++) {
+              dots[j].isTarget = false;
+              dots[j].colour = dots[j].baseColour;
+              dots[j].opacity = 0.6;
+              dots[j].blur = 0;
+            }
+            if (!bestLevel || level > bestLevel) {
+              bestLevel = level;
+              localStorage.setItem('dot-hunter-best-level', bestLevel);
+            }
+            bestLevelEl.textContent = bestLevel;
+          }
+        }, 1000);
+        return;
+      }
+
+      var hitTarget = false;
+      for (var i = 0; i < dots.length; i++) {
+        if (!dots[i].isTarget) continue;
+        var ddx = dots[i].x - mx, ddy = dots[i].y - my;
+        var d = ddx * ddx + ddy * ddy;
+        var hr = Math.max(dots[i].radius, 10);
+        if (d < hr * hr) {
+          hitTarget = true;
+          spawnBurst(dots[i].x, dots[i].y);
+          level++;
+          counterEl.textContent = level;
+          if (level > (bestLevel || 0)) {
+            bestLevel = level;
+            localStorage.setItem('dot-hunter-best-level', bestLevel);
+            bestLevelEl.textContent = bestLevel;
+          }
+          levelFlashEl.textContent = 'Level ' + level;
+          overlayLevel.classList.remove('hidden');
+          setTimeout(function() { overlayLevel.classList.add('hidden'); }, 1200);
+          createDots();
+          assignTarget();
+          break;
+        }
+      }
+      if (!hitTarget) {
+        for (var i = 0; i < dots.length; i++) {
+          var ddx = dots[i].x - mx, ddy = dots[i].y - my;
+          var d = ddx * ddx + ddy * ddy;
+          var hr = Math.max(dots[i].radius, 10);
+          if (d < hr * hr) {
+            // Wrong dot clicked — just ignore it, game continues until timer runs out
+            break;
+          }
+        }
+      }
+    });
+
+    createDots();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (gameState === 'playing') {
+        // no timer needed
+      }
+
+      var m = (gameState === 'playing') ? mouse : { x: undefined, y: undefined };
+      for (var i = 0; i < dots.length; i++) dots[i].update(m);
+
+      // draw regular dots first, then target on top so it's visible
+      for (var i = 0; i < dots.length; i++) { if (!dots[i].isTarget) dots[i].draw(); }
+      for (var i = 0; i < dots.length; i++) { if (dots[i].isTarget) dots[i].draw(); }
+
+      for (var j = particles.length - 1; j >= 0; j--) {
+        particles[j].update();
+        particles[j].draw();
+        if (particles[j].life <= 0) particles.splice(j, 1);
+      }
+      ctx.globalAlpha = 1;
+    }
+    animate();
+  })();
+  </script>
+
+</body>
+</html>

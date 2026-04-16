@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucy Mossakowski</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwindcss.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Avenir Next"', 'Avenir', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'] },
+          colors: {
+            brand: 'var(--brand)',
+            surface: 'var(--surface)',
+            ink: 'var(--ink)',
+            'ink-light': 'var(--ink-light)',
+            'ink-muted': 'var(--ink-muted)',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @media print {
+      body { padding: 0; }
+      section { padding-bottom: 0.25rem !important; }
+      .pb-12, .pb-16 { padding-bottom: 0.25rem !important; }
+      .mb-16, .mb-10, .mb-8 { margin-bottom: 0.25rem !important; }
+      h1 { font-size: 1.75rem !important; }
+      nav.border-b, footer.border-t { border-width: 0 !important; }
+    }
+  </style>
+</head>
+<body class="bg-surface text-ink font-sans antialiased">
+
+  <!-- Skip to content -->
+  <a href="#experience" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:px-4 focus:py-2 focus:bg-brand focus:text-white focus:rounded-lg">Skip to content</a>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur border-b border-ink/5 px-6" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-14">
+      <a href="index.html" class="text-sm font-semibold tracking-tight text-ink">Lucy Mossakowski</a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-ink-muted">
+        <a href="index.html" class="nav-link hover:text-ink transition">All Work</a>
+        <a href="play.html" class="nav-link hover:text-ink transition">Some Play</a>
+        <a href="cv.html" class="nav-link text-ink" aria-current="page">The Human Behind It</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+      </div>
+      <div class="flex md:hidden items-center gap-3">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+        <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-14 z-40 px-6 pt-8" style="background:var(--surface);">
+    <div class="flex flex-col gap-6 text-lg text-ink-muted">
+      <a href="index.html" class="nav-link hover:text-ink transition">All Work</a>
+      <a href="play.html" class="nav-link hover:text-ink transition">Some Play</a>
+      <a href="cv.html" class="nav-link text-ink" aria-current="page">The Human Behind It</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <section class="pt-24 pb-2 px-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- OPTION 2: Pull quote style -->
+      <div class="mb-4 border-b border-ink/5 pb-4" id="option2">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Lucy Mossakowski</h1>
+        <p class="text-xl md:text-2xl text-ink-light font-medium mt-6 leading-snug max-w-3xl">I make intricate systems feel simple and intuitive.</p>
+        <p class="text-ink-light mt-4 leading-relaxed">User Experience Designer with 7+ years of experience designing internal tools and optimising complex workflows. My approach is grounded in research, design thinking, and continuous iteration. With a background in service design and a strong interest in how people interact with systems, I bring clarity and empathy to messy problems and thrive in collaborative, cross-functional teams.</p>
+        <p class="text-ink-light mt-3 leading-relaxed">Beyond my core design work, I lead the UK Neurodiversity Charter at Zynga. In my spare time, I enjoy running, playing cosy games, and diving into D&amp;D campaigns - anything that blends creative problem-solving with storytelling.</p>
+        <div class="flex flex-wrap items-center gap-4 mt-4">
+          <a href="mailto:lucymossa@gmail.com" class="text-brand hover:underline">lucymossa@gmail.com</a>
+          <span class="text-ink-muted no-print">·</span>
+          <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="text-brand hover:underline no-print" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span class="text-ink-muted no-print">·</span>
+          <button onclick="window.print()" class="no-print btn-outline">Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="px-6 pb-10">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold mb-3">Experience</h2>
+
+      <div class="space-y-10">
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6 items-baseline">
+          <div class="text-sm text-ink-muted">Jan 2023 - Present</div>
+          <div>
+            <h3 class="font-semibold text-lg">Senior UX Designer · Zynga</h3>
+            <ul class="text-ink-light mt-2 leading-relaxed space-y-1.5 list-disc list-outside ml-4">
+              <li>Conduct user interviews to capture workflow needs, translating findings directly into design solutions.</li>
+              <li>Translate research findings into actionable design requirements, ensuring user needs are reflected in delivered features.</li>
+              <li>Design and iterate wireframes, prototypes, and user flows for complex internal tools.</li>
+              <li>Author team resources including user archetype definitions, design spec templates, and research guidelines.</li>
+              <li>Structure information architecture and user journeys for PC solutions, establishing initial content frameworks that evolve through development.</li>
+              <li>Facilitate design reviews with product and engineering, adapting solutions to technical constraints while preserving user experience goals.</li>
+              <li>Provide informal mentorship to junior designers across teams through design critiques and knowledge-sharing.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6 items-baseline">
+          <div class="text-sm text-ink-muted">Aug 2022 - Jan 2023</div>
+          <div>
+            <h3 class="font-semibold text-lg">Senior UX Designer · NaturalMotion Games</h3>
+            <ul class="text-ink-light mt-2 leading-relaxed space-y-1.5 list-disc list-outside ml-4">
+              <li>Took full ownership of UX across multiple features, delivering style guides, wireframes, and user flows from brief to handoff.</li>
+              <li>Used analytics and usability testing to iterate on cross-platform designs, improving engagement while maintaining accessibility standards.</li>
+              <li>Collaborated with PMs, artists, and engineers across disciplines to ship cohesive experiences on mobile and console.</li>
+              <li>Applied platform-specific interaction patterns and HCI principles to deliver polished, device-appropriate experiences.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6 items-baseline">
+          <div class="text-sm text-ink-muted">Aug 2020 - Aug 2022</div>
+          <div>
+            <h3 class="font-semibold text-lg">UX Designer · NaturalMotion Games</h3>
+            <ul class="text-ink-light mt-2 leading-relaxed space-y-1.5 list-disc list-outside ml-4">
+              <li>Designed cross-platform experiences, applying interaction design and HCI principles to improve usability.</li>
+              <li>Rapidly translated feature specs into high-quality design solutions, consistently balancing user needs with business constraints.</li>
+              <li>Partnered with multi-disciplinary teams, incorporating research insights and stakeholder feedback into iterative, data-informed design.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6 items-baseline">
+          <div class="text-sm text-ink-muted">Aug 2017 - Jul 2019</div>
+          <div>
+            <h3 class="font-semibold text-lg">Junior Product Designer · Inspiral Design Ltd</h3>
+            <p class="text-ink-light mt-2 leading-relaxed">Designed print and digital materials from concept to delivery, applying branding, design thinking, and client-focused problem solving.</p>
+          </div>
+        </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="px-6 pb-10">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold mb-3">Education</h2>
+      <div class="space-y-6">
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6 items-baseline">
+          <div class="text-sm text-ink-muted">2019 - 2020</div>
+          <div>
+            <h3 class="font-semibold text-lg">MSc Digital Service Design: Distinction</h3>
+            <p class="text-ink-light mt-1">Brunel University</p>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6 items-baseline">
+          <div class="text-sm text-ink-muted">2015 - 2019</div>
+          <div>
+            <h3 class="font-semibold text-lg">BSc Digital Design: First Class Honours</h3>
+            <p class="text-ink-light mt-1">Brunel University</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="px-6 pb-10">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold mb-3">Skills</h2>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-sm font-semibold text-ink mb-2">Collaboration &amp; Communication</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:#05966914;color:#059669">Cross-Functional Collaboration</span>
+            <span class="tag" style="background:#05966914;color:#059669">Design Workshops</span>
+            <span class="tag" style="background:#05966914;color:#059669">Mentorship</span>
+            <span class="tag" style="background:#05966914;color:#059669">Stakeholder Alignment</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-ink mb-2">Product Thinking</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:#DC262614;color:#DC2626">Business &amp; User Alignment</span>
+            <span class="tag" style="background:#DC262614;color:#DC2626">Data-Driven Iteration</span>
+            <span class="tag" style="background:#DC262614;color:#DC2626">Design Thinking</span>
+            <span class="tag" style="background:#DC262614;color:#DC2626">Live Service Optimisation</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-ink mb-2">Service Design</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:#0068C814;color:#0068C8">Accessibility</span>
+            <span class="tag" style="background:#0068C814;color:#0068C8">Cross-Platform Design</span>
+            <span class="tag" style="background:#0068C814;color:#0068C8">End-to-End Service Design</span>
+            <span class="tag" style="background:#0068C814;color:#0068C8">Information Architecture</span>
+            <span class="tag" style="background:#0068C814;color:#0068C8">Journey Mapping</span>
+            <span class="tag" style="background:#0068C814;color:#0068C8">Prototypes</span>
+            <span class="tag" style="background:#0068C814;color:#0068C8">Wireframes</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-ink mb-2">Tools &amp; Systems</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:#D9730614;color:#D97306">AI</span>
+            <span class="tag" style="background:#D9730614;color:#D97306">Design Systems</span>
+            <span class="tag" style="background:#D9730614;color:#D97306">Figma</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-ink mb-2">User Research &amp; Usability Testing</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:#6B46C114;color:#6B46C1">A/B Testing</span>
+            <span class="tag" style="background:#6B46C114;color:#6B46C1">Qualitative Research</span>
+            <span class="tag" style="background:#6B46C114;color:#6B46C1">Quantitative Research</span>
+            <span class="tag" style="background:#6B46C114;color:#6B46C1">User Interviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extras -->
+  <section class="px-6 pb-10">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold mb-3">Extras</h2>
+      <div class="space-y-6">
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6">
+          <div class="text-sm text-ink-muted">Community</div>
+          <div class="text-ink-light">
+            <p>UK Neurodiversity Charter Lead @ Zynga</p>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6">
+          <div class="text-sm text-ink-muted">Languages</div>
+          <p class="text-ink-light">German, English, Danish</p>
+        </div>
+        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-6">
+          <div class="text-sm text-ink-muted">Interests</div>
+          <p class="text-ink-light">Running, D&amp;D, Video Games</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-ink/5 py-8 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs text-ink-muted">
+      <div class="flex gap-4">
+        <a href="mailto:lucymossa@gmail.com" class="hover:text-ink hover:underline transition">lucymossa@gmail.com</a>
+        <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="hover:text-ink hover:underline transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <span>Built with Tailwind CSS & Amazon Q</span>
+    </div>
+  </footer>
+
+</body>
+</html>
