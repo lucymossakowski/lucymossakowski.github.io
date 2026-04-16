@@ -38,7 +38,10 @@
       [id^="modal-"] .max-w-3xl { max-width: 100% !important; padding: 1rem 0 !important; }
       .print-case-study-divider { border-top: 1px solid #ccc; margin: 2rem 0; }
       #password-gate { display: none !important; }
+      #lightbox { display: none !important; }
     }
+    .case-img { cursor: zoom-in; transition: opacity 0.15s; }
+    .case-img:hover { opacity: 0.85; }
   </style>
 </head>
 <body class="bg-surface text-ink font-sans antialiased">
@@ -49,6 +52,7 @@
       <h1 class="text-2xl font-bold mb-2">Lucy Mossakowski</h1>
       <p class="text-ink-muted text-sm mb-6">This portfolio is password protected.</p>
       <form onsubmit="return checkPassword(event)" class="flex gap-2">
+      <label for="pw-input" class="sr-only">Password</label>
         <input id="pw-input" type="password" placeholder="Enter password" autocomplete="off" class="flex-1 px-3 py-2 text-sm border border-ink/10 rounded-lg bg-transparent text-ink placeholder:text-ink-muted focus:outline-none focus:border-ink/30">
         <button type="submit" class="btn-outline">Enter</button>
       </form>
@@ -105,8 +109,8 @@
 
       <!-- Project 1: Payments -->
       <div class="project-card grid md:grid-cols-2 gap-12 items-center mb-24 cursor-pointer group" onclick="openModal('modal-3')" role="button" tabindex="0" aria-label="View Payments case study" onkeydown="if(event.key==='Enter')openModal('modal-3')">
-        <div class="rounded-2xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
-          <img loading="lazy" src="images/payments-hero.png" alt="Payments project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
+        <div class="rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
+          <img src="images/payments-hero.png" alt="Payments project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
         </div>
         <div>
           <div class="flex gap-2 mb-4">
@@ -122,8 +126,8 @@
 
       <!-- Project 2: LocManager -->
       <div class="project-card grid md:grid-cols-2 gap-12 items-center cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter')openModal('modal-2')">
-        <div class="md:order-2 rounded-2xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
-          <img loading="lazy" src="images/locmanager-hero.png" alt="LocManager project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
+        <div class="md:order-2 rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
+          <img src="images/locmanager-hero.png" alt="LocManager project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
         </div>
         <div class="md:order-1">
           <div class="flex gap-2 mb-4">
@@ -140,72 +144,19 @@
     </div>
   </section>
 
-  <!-- Modal 2: LocManager -->
-  <div id="modal-2" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="LocManager case study">
-    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-2')"></div>
-    <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-2xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
-      <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between" style="background:var(--surface);">
-        <h2 class="font-semibold">LocManager</h2>
-        <button onclick="closeModal('modal-2')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
-      </div>
-      <div class="max-w-3xl mx-auto px-6 py-12">
-        <div class="rounded-xl overflow-hidden bg-ink/5 mb-12">
-          <img loading="lazy" src="images/locmanager-hero.png" alt="Overview of the LocManager interface" class="w-full">
-        </div>
-
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">The Problem</h3>
-        <p class="text-ink-light leading-relaxed mb-10">LocManager is Zynga's internal localisation tool that enables producers to manage the process of sending translation requests from game teams to external translation vendors, then push translated content back. I joined the project just before general access release, inheriting a tool with several UX issues: flows that didn't behave as expected (e.g. schedules updating before save was pressed), misplaced buttons, an overly complex status dropdown, excessive visual nesting, and a notification settings feature with high cognitive load.</p>
-
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Process</h3>
-        <div class="grid sm:grid-cols-3 gap-6 mb-6">
-          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Audit</p><p class="text-sm text-ink-light mt-1">Conducted a core review of the existing interface, identifying awkward flows, misplaced actions, confusing status options, and areas of unnecessary complexity. Also analysed the Lockit tool, which is SocialPoint's legacy tool and being replaced by LocManager, to understand feature parity requirements.</p></div>
-          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">2. Iterate</p><p class="text-sm text-ink-light mt-1">Downloaded the codebase from the GitHub repository and worked through issues via prototyping, using AI to accelerate exploration. Shared results continuously with engineering to address the identified problems.</p></div>
-          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Extend</p><p class="text-sm text-ink-light mt-1">Currently working on post-general-access features focused on feature parity with Lockit, consolidating all teams onto a single platform. We are exploring how AI can be integrated, particularly in the context of content management.</p></div>
-        </div>
-        <div class="rounded-xl overflow-hidden bg-ink/5 mb-10">
-          <img loading="lazy" src="images/locmanager-analysis.png" alt="Lockit analysis and feature parity comparison" class="w-full">
-        </div>
-
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Solution</h3>
-        <p class="text-ink-light leading-relaxed mb-6">Addressed the core usability issues: corrected save behaviour so changes only apply when explicitly confirmed, repositioned the save button to sit where users expect it, simplified the status dropdown to reduce confusion, reduced visual nesting (boxes inside boxes), and redesigned the notification settings to lower cognitive load.</p>
-
-        <p class="text-xs font-semibold text-ink-muted mb-3">Status dropdown</p>
-        <div class="grid sm:grid-cols-2 gap-4 mb-6">
-          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-status-before.png" alt="Status dropdown before — too many confusing options" class="w-full"></div>
-          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-status-after.png" alt="Status dropdown after — simplified and clearer" class="w-full"></div>
-        </div>
-
-        <p class="text-xs font-semibold text-ink-muted mb-3">Notification settings</p>
-        <div class="grid sm:grid-cols-2 gap-4 mb-10">
-          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-notifications-before.png" alt="Notification settings before — high cognitive load" class="w-full"></div>
-          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/locmanager-notifications-after.png" alt="Notification settings after — redesigned for clarity" class="w-full"></div>
-        </div>
-
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Outcome</h3>
-        <div class="grid sm:grid-cols-3 gap-6 mb-10">
-          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Improved usability</p><p class="text-sm text-ink-light mt-1">Core UX issues resolved before general access</p></div>
-          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Single platform</p><p class="text-sm text-ink-light mt-1">Working towards consolidating Lockit and LocManager into one tool for all teams</p></div>
-          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">AI exploration</p><p class="text-sm text-ink-light mt-1">Investigating AI integration for content management workflows</p></div>
-        </div>
-
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Reflection</h3>
-        <p class="text-ink-light leading-relaxed">Coming into a project late without handover means I inherited decisions I didn't make and was lacking context for. I tackled this through intensive catch ups with the team to build up my understanding of the tool and user needs from scratch. The challenge was not starting from scratch however, but identifying what matters most and making targeted improvements without disrupting what's already working. Prototyping directly in code (with AI assistance) also proved far more effective for this project than static mockups, because it let me share working examples with engineering rather than abstract specifications.</p>
-      </div>
-    </div>
-  </div>
-
   <!-- Modal 3: Payments -->
   <div id="modal-3" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="Payments case study">
     <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-3')"></div>
-    <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-2xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
+    <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
       <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between" style="background:var(--surface);">
         <h2 class="font-semibold">Payments</h2>
         <button onclick="closeModal('modal-3')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
       </div>
       <div class="max-w-3xl mx-auto px-6 py-12">
-        <div class="rounded-xl overflow-hidden bg-ink/5 mb-12">
-          <img loading="lazy" src="images/payments-hero.png" alt="Overview of the redesigned Payments Admin UI" class="w-full">
+        <div class="rounded-xl overflow-hidden bg-ink/5">
+          <img src="images/payments-hero.png" alt="Redesigned Payments Admin catalogue table showing simplified layout with customisable columns" class="w-full">
         </div>
+        <p class="text-xs text-ink-muted mt-2 mb-10">The redesigned Payments Admin catalogue view</p>
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">The Problem</h3>
         <p class="text-ink-light leading-relaxed mb-4">Zynga's Payments Admin tool is used by game teams, release operations and customer support, including the player VIP team to manage in-game catalogue products, export to storefronts, track player transactions, and manage blocked players. The existing tool had grown haphazardly over time: it was difficult to use, suffered from poor performance, and created a heavy reliance on external teams for tasks users should have been able to complete independently.</p>
@@ -230,13 +181,14 @@
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Solution</h3>
         <div class="grid sm:grid-cols-2 gap-4 mb-4">
-          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/payments-before.png" alt="Old Payments Admin catalogue UI" class="w-full"></div>
-          <div class="rounded-xl overflow-hidden bg-ink/5"><img loading="lazy" src="images/payments-after.png" alt="Redesigned Payments Admin catalogue UI" class="w-full"></div>
+          <figure class="rounded-xl overflow-hidden bg-ink/5"><img src="images/payments-before.png" alt="Old Payments Admin catalogue UI showing cluttered table with too many visible columns and confusing publish status" class="w-full case-img" onclick="openLightbox(this)"><figcaption class="text-xs text-ink-muted p-2">Before: cluttered catalogue table</figcaption></figure>
+          <figure class="rounded-xl overflow-hidden bg-ink/5"><img src="images/payments-after.png" alt="Redesigned Payments Admin catalogue UI with simplified table layout, stacked search and filter, and clearer status indicators" class="w-full case-img" onclick="openLightbox(this)"><figcaption class="text-xs text-ink-muted p-2">After: simplified layout with customisable columns</figcaption></figure>
         </div>
         <p class="text-ink-light leading-relaxed mb-4">The redesigned Payments Admin simplifies complex workflows that previously required external support. Key improvements include a cleaner catalogue table with customisable columns, auto-filled product fields to reduce manual input, a more intuitive publish flow that reduces user anxiety, and streamlines the export functionality. A direct link to the Slack support channel in the portal header helps prevent reliance on the release operations team for routine tasks.</p>
-        <div class="rounded-xl overflow-hidden bg-ink/5 mb-10">
-          <img loading="lazy" src="images/payments-detail.png" alt="Detail of a specific design decision in the Payments redesign" class="w-full">
-        </div>
+        <figure class="rounded-xl overflow-hidden bg-ink/5 mb-10">
+          <img src="images/payments-detail.png" alt="Product detail view showing auto-filled fields and streamlined input layout" class="w-full case-img" onclick="openLightbox(this)">
+          <figcaption class="text-xs text-ink-muted p-2">Product detail view with auto-filled fields</figcaption>
+        </figure>
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Outcome</h3>
         <div class="grid sm:grid-cols-3 gap-6 mb-10">
@@ -250,6 +202,62 @@
       </div>
     </div>
   </div>
+  <!-- Modal 2: LocManager -->
+  <div id="modal-2" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="LocManager case study">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-2')"></div>
+    <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
+      <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between" style="background:var(--surface);">
+        <h2 class="font-semibold">LocManager</h2>
+        <button onclick="closeModal('modal-2')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
+      </div>
+      <div class="max-w-3xl mx-auto px-6 py-12">
+        <div class="rounded-xl overflow-hidden bg-ink/5">
+          <img src="images/locmanager-hero.png" alt="LocManager interface showing the group configuration view with sidebar navigation and scheduler" class="w-full">
+        </div>
+        <p class="text-xs text-ink-muted mt-2 mb-10">The LocManager group configuration view</p>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">The Problem</h3>
+        <p class="text-ink-light leading-relaxed mb-10">LocManager is Zynga's internal localisation tool that enables producers to manage the process of sending translation requests from game teams to external translation vendors, then push translated content back. I joined the project just before general access release, inheriting a tool with several UX issues: flows that didn't behave as expected (e.g. schedules updating before save was pressed), misplaced buttons, an overly complex status dropdown, excessive visual nesting, and a notification settings feature with high cognitive load.</p>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Process</h3>
+        <div class="grid sm:grid-cols-3 gap-6 mb-6">
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Audit</p><p class="text-sm text-ink-light mt-1">Conducted a core review of the existing interface, identifying awkward flows, misplaced actions, confusing status options, and areas of unnecessary complexity. Also analysed the Lockit tool, which is SocialPoint's legacy tool and being replaced by LocManager, to understand feature parity requirements.</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">2. Iterate</p><p class="text-sm text-ink-light mt-1">Downloaded the codebase from the GitHub repository and worked through issues via prototyping, using AI to accelerate exploration. Shared results continuously with engineering to address the identified problems.</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Extend</p><p class="text-sm text-ink-light mt-1">Currently working on post-general-access features focused on feature parity with Lockit, consolidating all teams onto a single platform. We are exploring how AI can be integrated, particularly in the context of content management.</p></div>
+        </div>
+        <figure class="rounded-xl overflow-hidden bg-ink/5 mb-10">
+          <img src="images/locmanager-analysis.png" alt="Design review notes annotated on Figma wireframes comparing Lockit and LocManager features" class="w-full case-img" onclick="openLightbox(this)">
+          <figcaption class="text-xs text-ink-muted p-2">Design review notes on Figma wireframes</figcaption>
+        </figure>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Solution</h3>
+        <p class="text-ink-light leading-relaxed mb-6">Addressed the core usability issues: corrected save behaviour so changes only apply when explicitly confirmed, repositioned the save button to sit where users expect it, simplified the status dropdown to reduce confusion, reduced visual nesting (boxes inside boxes), and redesigned the notification settings to lower cognitive load.</p>
+
+        <p class="text-xs font-semibold text-ink-muted mb-3">Status dropdown</p>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <figure class="rounded-xl overflow-hidden bg-ink/5"><img src="images/locmanager-status-before.png" alt="Status dropdown before redesign showing too many options with unclear labels" class="w-full case-img" onclick="openLightbox(this)"><figcaption class="text-xs text-ink-muted p-2">Before: too many confusing options</figcaption></figure>
+          <figure class="rounded-xl overflow-hidden bg-ink/5"><img src="images/locmanager-status-after.png" alt="Status dropdown after redesign with simplified options and clearer labels" class="w-full case-img" onclick="openLightbox(this)"><figcaption class="text-xs text-ink-muted p-2">After: simplified and clearer</figcaption></figure>
+        </div>
+
+        <p class="text-xs font-semibold text-ink-muted mb-3">Notification settings</p>
+        <div class="grid sm:grid-cols-2 gap-4 mb-10">
+          <figure class="rounded-xl overflow-hidden bg-ink/5"><img src="images/locmanager-notifications-before.png" alt="Notification settings before redesign with high cognitive load and dense layout" class="w-full case-img" onclick="openLightbox(this)"><figcaption class="text-xs text-ink-muted p-2">Before: high cognitive load</figcaption></figure>
+          <figure class="rounded-xl overflow-hidden bg-ink/5"><img src="images/locmanager-notifications-after.png" alt="Notification settings after redesign with clearer grouping and reduced complexity" class="w-full case-img" onclick="openLightbox(this)"><figcaption class="text-xs text-ink-muted p-2">After: redesigned for clarity</figcaption></figure>
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Outcome</h3>
+        <div class="grid sm:grid-cols-3 gap-6 mb-10">
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Improved usability</p><p class="text-sm text-ink-light mt-1">Core UX issues resolved before general access</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Single platform</p><p class="text-sm text-ink-light mt-1">Working towards consolidating Lockit and LocManager into one tool for all teams</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">AI exploration</p><p class="text-sm text-ink-light mt-1">Investigating AI integration for content management workflows</p></div>
+        </div>
+
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Reflection</h3>
+        <p class="text-ink-light leading-relaxed">Coming into a project late without handover means I inherited decisions I didn't make and was lacking context for. I tackled this through intensive catch ups with the team to build up my understanding of the tool and user needs from scratch. The challenge was not starting from scratch however, but identifying what matters most and making targeted improvements without disrupting what's already working. Prototyping directly in code (with AI assistance) also proved far more effective for this project than static mockups, because it let me share working examples with engineering rather than abstract specifications.</p>
+      </div>
+    </div>
+  </div>
+
 
   <script>
     function openModal(id) {
@@ -262,12 +270,27 @@
     }
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
+        closeLightbox();
         document.querySelectorAll('[id^="modal-"]').forEach(function(m) {
           m.classList.add('hidden');
         });
         document.body.style.overflow = '';
       }
     });
+    function openLightbox(img) {
+      event.stopPropagation();
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+    }
+    function closeLightbox() {
+      var lb = document.getElementById('lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+    }
   </script>
 
   <!-- Footer -->
@@ -280,6 +303,11 @@
       <span>Built with Tailwind CSS & Amazon Q</span>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[150] hidden items-center justify-center p-6 cursor-zoom-out" style="background:rgba(0,0,0,0.85);" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Enlarged image view">
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full rounded-lg shadow-2xl">
+  </div>
 
   </div><!-- /site-content -->
 
