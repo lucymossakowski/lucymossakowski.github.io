@@ -95,9 +95,9 @@
   <section class="min-h-screen flex items-center px-6">
     <div class="max-w-3xl mx-auto">
       <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-ink">I make intricate systems feel simple and intuitive.</h1>
-      <p class="mt-6 text-xl text-ink-light max-w-xl leading-relaxed">Designing products that simplify complex operational workflows — grounded in research, design thinking, and continuous iteration.</p>
+      <p class="mt-6 text-xl text-ink-light max-w-xl leading-relaxed">Designing products that simplify complex operational workflows through research, design thinking, and continuous iteration.</p>
       <div class="flex justify-center md:justify-start items-center gap-4 mt-10">
-        <a href="#work" class="inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline">See the work ↓</a>
+        <a href="#work" class="no-print inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline">See the work ↓</a>
         <button onclick="window.print()" class="no-print btn-outline">Download PDF</button>
       </div>
     </div>
@@ -108,35 +108,35 @@
     <div class="max-w-6xl mx-auto">
 
       <!-- Project 1: Payments -->
-      <div class="project-card grid md:grid-cols-2 gap-12 items-center mb-24 cursor-pointer group" onclick="openModal('modal-3')" role="button" tabindex="0" aria-label="View Payments case study" onkeydown="if(event.key==='Enter')openModal('modal-3')">
+      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center mb-24 cursor-pointer group" onclick="openModal('modal-3')" role="button" tabindex="0" aria-label="View Payments case study" onkeydown="if(event.key==='Enter')openModal('modal-3')">
         <div class="rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
           <img src="images/payments-hero.png" alt="Payments project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
         </div>
         <div>
-          <div class="flex gap-2 mb-4">
-            <span class="tag" style="background:#6B46C114;color:#6B46C1;">User Research</span>
-            <span class="tag" style="background:#0068C814;color:#0068C8;">Information Architecture</span>
-            <span class="tag" style="background:#DC262614;color:#DC2626;">Design Thinking</span>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-center" style="background:#6B46C114;color:#6B46C1;">User Research</span>
+            <span class="tag text-center" style="background:#0068C814;color:#0068C8;">Information Architecture</span>
+            <span class="tag text-center" style="background:#DC262614;color:#DC2626;">Design Thinking</span>
           </div>
           <h3 class="text-2xl font-bold">Payments</h3>
-          <p class="text-ink-light mt-3 leading-relaxed">Redesigning an internal tool used by game teams, release operations and customer support — simplifying complex workflows and reducing reliance on external teams.</p>
+          <p class="text-ink-light mt-3 leading-relaxed">Redesigning an internal tool used across teams, such as release operations and customer support, with the focus on simplifying complex workflows and reducing reliance on external teams.</p>
           <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
         </div>
       </div>
 
       <!-- Project 2: LocManager -->
-      <div class="project-card grid md:grid-cols-2 gap-12 items-center cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter')openModal('modal-2')">
+      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter')openModal('modal-2')">
         <div class="md:order-2 rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
           <img src="images/locmanager-hero.png" alt="LocManager project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
         </div>
         <div class="md:order-1">
-          <div class="flex gap-2 mb-4">
-            <span class="tag" style="background:#0068C814;color:#0068C8;">Prototypes</span>
-            <span class="tag" style="background:#05966914;color:#059669;">Cross-Functional Collaboration</span>
-            <span class="tag" style="background:#DC262614;color:#DC2626;">Data-Driven Iteration</span>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-center" style="background:#0068C814;color:#0068C8;">Prototypes</span>
+            <span class="tag text-center" style="background:#05966914;color:#059669;">Cross-Functional Collaboration</span>
+            <span class="tag text-center" style="background:#DC262614;color:#DC2626;">Data-Driven Iteration</span>
           </div>
           <h3 class="text-2xl font-bold">LocManager</h3>
-          <p class="text-ink-light mt-3 leading-relaxed">Inheriting an internal localisation tool and iterating on the design — resolving UX issues, improving workflows, and consolidating multiple tools into one platform.</p>
+          <p class="text-ink-light mt-3 leading-relaxed">Inheriting an internal localisation tool and iterating on the design to resolve UX issues, improve workflows, and consolidate multiple tools into one platform.</p>
           <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
         </div>
       </div>
@@ -166,7 +166,7 @@
         <div class="grid sm:grid-cols-3 gap-6 mb-6">
           <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Research</p><p class="text-sm text-ink-light mt-1">Conducted 20+ user interviews across game teams, release operations, customer support, and the payments engineering team. Captured qualitative feedback to establish core user journeys, understand performance pain points, and determine user needs.</p></div>
           <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">2. Design</p><p class="text-sm text-ink-light mt-1">Translated research findings into design requirements. Set up wireframes addressing key issues: simplified table layouts, stacked search/sort/filter, auto-fill input fields, clearer publish flows, and improved export functionality. Iterated continuously with engineering.</p></div>
-          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Iterate</p><p class="text-sm text-ink-light mt-1">Working through the tool tab by tab — catalogue and localisation complete, transactions in progress, with regional pricing templates, grant retry, and blocked players to follow. Each phase follows the same research-first approach.</p></div>
+          <div class="p-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Iterate</p><p class="text-sm text-ink-light mt-1">Working through the tool tab by tab with catalogue and localisation complete, transactions in progress, with regional pricing templates, grant retry, and blocked players to follow. Each phase follows the same research-first approach.</p></div>
         </div>
         <div class="rounded-xl bg-ink/[0.03] p-6 mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-4">What users said</p>
@@ -295,12 +295,9 @@
 
   <!-- Footer -->
   <footer class="border-t border-ink/5 py-8 px-6">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs text-ink-muted">
-      <div class="flex gap-4">
+    <div class="max-w-6xl mx-auto flex justify-center gap-4 text-xs text-ink-muted">
         <a href="mailto:lucymossa@gmail.com" class="hover:text-ink hover:underline transition">lucymossa@gmail.com</a>
         <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="hover:text-ink hover:underline transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-      <span>Built with Tailwind CSS & Amazon Q</span>
     </div>
   </footer>
 
