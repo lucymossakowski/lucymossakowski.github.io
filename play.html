@@ -103,7 +103,6 @@
         <canvas id="game-canvas" style="display:block; width:100%; height:100%;" aria-label="Dot Hunter game — find the odd dot out"></canvas>
       </div>
 
-
     </div>
   </section>
 
@@ -124,8 +123,6 @@
     var bestLevelEl = document.getElementById('best-level');
     var timerEl = document.getElementById('timer');
     var hudEl = document.getElementById('hud');
-
-    var hudEl = document.getElementById('hud');
     var overlayIdle = document.getElementById('overlay-idle');
     var overlayWon = document.getElementById('overlay-won');
     var overlayLevel = document.getElementById('overlay-level');
@@ -144,7 +141,6 @@
     var GAME_DURATION = 60;
 
     if (bestLevel) bestLevelEl.textContent = bestLevel;
-
 
     function resize() {
       canvas.width = container.offsetWidth;
@@ -372,10 +368,6 @@
     function animate() {
       requestAnimationFrame(animate);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      if (gameState === 'playing') {
-        // no timer needed
-      }
 
       var m = (gameState === 'playing') ? mouse : { x: undefined, y: undefined };
       for (var i = 0; i < dots.length; i++) dots[i].update(m);
