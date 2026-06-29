@@ -7,12 +7,12 @@ window.caseStudyContent = {
         <p class="text-xs text-ink-muted mt-2 mb-10">The redesigned Payments Admin catalogue view</p>
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">The Problem</h3>
-        <p class="text-ink-light leading-relaxed mb-4">Zynga's Payments Admin tool is used by game teams, release operations and customer support, including the player VIP team to manage in-game catalogue products, export to storefronts, track player transactions, and manage blocked players. The existing tool had grown haphazardly over time: it was difficult to use, suffered from poor performance, and created a heavy reliance on external teams for tasks users should have been able to complete independently.</p>
+        <p class="text-ink-light leading-relaxed mb-4">An internal payments and catalogue management platform used across operations, customer support, and release teams to manage product catalogues, process transactions, and publish to external storefronts. The tool had grown without design involvement over time: it was difficult to use, suffered from poor performance, and created a heavy reliance on external teams for tasks users should have been able to complete independently.</p>
         <p class="text-ink-light leading-relaxed mb-10">Phase 1 addressed the catalogue and localisation pages. The ongoing work continues migrating the remaining pages to a redesigned UI.</p>
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Process</h3>
         <div class="space-y-3 mb-10">
-          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Research</p><p class="text-sm text-ink-light mt-1">Conducted 20+ user interviews across game teams, release operations, customer support, and the payments engineering team. Captured qualitative feedback to establish core user journeys, understand performance pain points, and determine user needs.</p></div>
+          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Research</p><p class="text-sm text-ink-light mt-1">Conducted 20+ user interviews across operations, release, customer support, and engineering teams. Captured qualitative feedback to establish core user journeys, understand performance pain points, and determine user needs.</p></div>
           <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">2. Design</p><p class="text-sm text-ink-light mt-1">Translated research findings into design requirements. Set up wireframes addressing key issues: simplified table layouts, stacked search/sort/filter, auto-fill input fields, clearer publish flows, and improved export functionality. Iterated continuously with engineering.</p></div>
           <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Iterate</p><p class="text-sm text-ink-light mt-1">Working through the tool tab by tab with catalogue and localisation complete, transactions in progress, with regional pricing templates, grant retry, and blocked players to follow. Each phase follows the same research-first approach.</p></div>
         </div>
@@ -21,10 +21,10 @@ window.caseStudyContent = {
           <div class="space-y-4">
             <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;The publish modal is difficult to understand due to existing design choices - bullet points look like checkboxes.&rdquo;</blockquote>
             <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;The overall process is confusing. There is no set process, so new members have no official learning material to rely on.&rdquo;</blockquote>
-            <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;Exporting for Apple fails frequently when more than five catalogue items are selected. The only workaround is to keep attempting the export - usually within five tries it works.&rdquo;</blockquote>
+            <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;Exporting to external platforms fails frequently when more than five catalogue items are selected. The only workaround is to keep attempting the export - usually within five tries it works.&rdquo;</blockquote>
             <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;Free transactions cluttering the list makes finding actual purchases difficult. There is no filtering on the main tab - no filtering by store, vendor, status, amount, or date range.&rdquo;</blockquote>
           </div>
-          <p class="text-xs text-ink-muted mt-4">From 20+ interviews across game teams, release operations, customer support, and the payments engineering team</p>
+          <p class="text-xs text-ink-muted mt-4">From 20+ interviews across operations, release, customer support, and engineering teams</p>
         </div>
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Solution</h3>
@@ -41,10 +41,10 @@ window.caseStudyContent = {
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Outcome</h3>
         <div class="rounded-xl bg-ink/[0.03] px-6 pt-4 pb-4 mb-3">
           <blockquote class="text-ink-light text-sm leading-relaxed border-l-2 border-brand pl-4">&ldquo;I really enjoy using the new tool due to its cleaner UI, easier to read, and publishing is more straightforward. The new purchase rule descriptions are pretty clear and allow users to know what the fields are actually doing.&rdquo;</blockquote>
-          <p class="text-xs text-ink-muted mt-3 pl-4">Game Team PM</p>
+          <p class="text-xs text-ink-muted mt-3 pl-4">Product Manager</p>
         </div>
         <div class="space-y-3 mb-10">
-          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Reduced dependency</p><p class="text-sm text-ink-light mt-1">Routine task requests to the release operations team decreased as game teams gained the ability to complete workflows independently.</p></div>
+          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Reduced dependency</p><p class="text-sm text-ink-light mt-1">Routine task requests to the release operations team decreased as operational teams gained the ability to complete workflows independently.</p></div>
           <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Design-led process</p><p class="text-sm text-ink-light mt-1">Product now holds new features for design review before development, where previously features were added without designer involvement.</p></div>
         </div>
 
@@ -58,11 +58,11 @@ window.caseStudyContent = {
         <p class="text-xs text-ink-muted mt-2 mb-10">The LocManager group configuration view</p>
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">The Problem</h3>
-        <p class="text-ink-light leading-relaxed mb-10">LocManager is Zynga's internal localisation tool that enables producers to manage the process of sending translation requests from game teams to external translation vendors, then push translated content back. I joined the project just before general access release, inheriting a tool with several UX issues: flows that didn't behave as expected (e.g. schedules updating before save was pressed), misplaced buttons, an overly complex status dropdown, excessive visual nesting, and a notification settings feature with high cognitive load.</p>
+        <p class="text-ink-light leading-relaxed mb-10">An internal localisation management platform used by operations teams to coordinate translation workflows between internal stakeholders and external vendors, then push approved content back into production systems. I joined the project just before general access release, inheriting a tool with several UX issues: flows that didn't behave as expected (e.g. schedules updating before save was pressed), misplaced buttons, an overly complex status dropdown, excessive visual nesting, and a notification settings feature with high cognitive load.</p>
 
         <h3 class="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">Process</h3>
         <div class="space-y-3 mb-10">
-          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Audit</p><p class="text-sm text-ink-light mt-1">Conducted a core review of the existing interface, identifying awkward flows, misplaced actions, confusing status options, and areas of unnecessary complexity. Also analysed the Lockit tool, which is SocialPoint's legacy tool and being replaced by LocManager, to understand feature parity requirements.</p></div>
+          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">1. Audit</p><p class="text-sm text-ink-light mt-1">Conducted a core review of the existing interface, identifying awkward flows, misplaced actions, confusing status options, and areas of unnecessary complexity. Also analysed the legacy platform being replaced by LocManager, to understand feature parity requirements.</p></div>
           <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">2. Iterate</p><p class="text-sm text-ink-light mt-1">Downloaded the codebase from the GitHub repository and worked through issues via prototyping, using AI to accelerate exploration. Shared results continuously with engineering to address the identified problems.</p></div>
           <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">3. Extend</p><p class="text-sm text-ink-light mt-1">Currently working on post-general-access features focused on feature parity with Lockit, consolidating all teams onto a single platform. We are exploring how AI can be integrated, particularly in the context of content management.</p></div>
         </div>
@@ -92,7 +92,7 @@ window.caseStudyContent = {
           <p class="text-xs text-ink-muted mt-3 pl-4">Localisation Producer</p>
         </div>
         <div class="space-y-3 mb-10">
-          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Wider adoption</p><p class="text-sm text-ink-light mt-1">4 additional game teams adopted the tool following the redesign, driven by consolidation with the legacy Lockit platform.</p></div>
+          <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Wider adoption</p><p class="text-sm text-ink-light mt-1">4 additional product teams adopted the tool following the redesign, driven by consolidation with the legacy platform.</p></div>
           <div class="pt-0 pb-4 px-4 rounded-xl bg-ink/[0.03]"><p class="font-semibold text-sm">Earlier design involvement</p><p class="text-sm text-ink-light mt-1">Engineering now requests design input earlier in the process, reflecting increased trust in the design function.</p></div>
         </div>
 
