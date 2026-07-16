@@ -111,7 +111,7 @@
       </div>
 
       <!-- Project 2: LocManager -->
-      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal-2');}">
+      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center mb-24 cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal-2');}">
         <div class="md:order-2 rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
           <img src="images/locmanager-hero.png" alt="LocManager project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
         </div>
@@ -123,6 +123,27 @@
           </div>
           <h3 class="text-2xl font-bold">LocManager</h3>
           <p class="text-ink-light mt-3 leading-relaxed">I inherited a live localisation platform without a handover, with several UX issues: flows that updated before you saved, misplaced controls, and a notification feature no one fully understood. I fixed the core issues, expanded adoption to four additional teams, and turned an awkward start into a better working model between design and engineering.</p>
+          <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
+        </div>
+      </div>
+
+      <!-- Project 3: HSBC Smart Banking (MSc Dissertation) -->
+      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center cursor-pointer group" onclick="openModal('modal-1')" role="button" tabindex="0" aria-label="View HSBC Smart Banking case study" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal-1');}">
+        <div class="rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow" style="padding:1.5rem 1rem 0;">
+          <div class="flex items-end justify-center gap-2">
+            <img src="images/hsbc-money.png" alt="Money overview screen" class="w-1/3 rounded-t-lg shadow-md group-hover:translate-y-[-2px] transition-transform duration-500" style="transform-origin:bottom;">
+            <img src="images/hsbc-hero.png" alt="Savings accounts screen" class="w-1/3 rounded-t-lg shadow-lg group-hover:translate-y-[-4px] transition-transform duration-500" style="transform-origin:bottom;">
+            <img src="images/hsbc-rewards.png" alt="Rewards screen" class="w-1/3 rounded-t-lg shadow-md group-hover:translate-y-[-2px] transition-transform duration-500" style="transform-origin:bottom;">
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-center" style="background:#6B46C114;color:#6B46C1;">Qualitative Research</span>
+            <span class="tag text-center" style="background:#0068C814;color:#0068C8;">Journey Mapping</span>
+            <span class="tag text-center" style="background:#0068C814;color:#0068C8;">End-to-End Service Design</span>
+          </div>
+          <h3 class="text-2xl font-bold">HSBC Smart Banking</h3>
+          <p class="text-ink-light mt-3 leading-relaxed">A smart banking application for students, designed as my MSc dissertation in 2020. A fictional brief based on real research, from a systematic literature review of 49 papers through to user testing with 28 participants. The hypothesis: a well-designed smart application can increase brand interest.</p>
           <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
         </div>
       </div>
@@ -151,6 +172,20 @@
       <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between z-30" style="background:var(--surface);">
         <h2 class="text-2xl font-bold">LocManager</h2>
         <button onclick="closeModal('modal-2')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
+      </div>
+      <div class="max-w-3xl mx-auto px-6 py-12">
+        <div data-case-content></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1: HSBC Smart Banking -->
+  <div id="modal-1" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="HSBC Smart Banking case study">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-1')"></div>
+    <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
+      <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between z-30" style="background:var(--surface);">
+        <h2 class="text-2xl font-bold">HSBC Smart Banking</h2>
+        <button onclick="closeModal('modal-1')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
       </div>
       <div class="max-w-3xl mx-auto px-6 py-12">
         <div data-case-content></div>
