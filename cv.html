@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucy Mossakowski</title>
+  <title>Lucy Mossakowski — The Human Behind It</title>
+  <meta name="description" content="About Lucy Mossakowski — Senior Product Designer with 7+ years of experience designing internal tools and complex workflows.">
+  <meta property="og:title" content="Lucy Mossakowski — The Human Behind It">
+  <meta property="og:description" content="Senior Product Designer with 7+ years of experience designing internal tools and complex workflows.">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -28,10 +32,8 @@
     @media print {
       body { padding: 0; }
       section { padding-bottom: 0.25rem !important; }
-      .pb-12, .pb-16 { padding-bottom: 0.25rem !important; }
       .mb-16, .mb-10, .mb-8 { margin-bottom: 0.25rem !important; }
       h1 { font-size: 1.75rem !important; }
-      nav.border-b, footer.border-t { border-width: 0 !important; }
       .print-email { font-size: inherit !important; font-weight: inherit !important; color: #1A1A1A !important; }
     }
   </style>
@@ -44,7 +46,7 @@
   <!-- Nav -->
   <nav class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur border-b border-ink/5 px-6" aria-label="Main navigation">
     <div class="max-w-6xl mx-auto flex items-center justify-between h-14">
-      <a href="index.html" class="text-sm font-semibold tracking-tight text-ink">Lucy Mossakowski</a>
+      <a href="index.html" class="font-semibold uppercase tracking-widest text-ink-muted">Lucy Mossakowski</a>
       <div class="hidden md:flex items-center gap-6 text-sm text-ink-muted">
         <a href="index.html" class="nav-link hover:text-ink transition">All Work</a>
         <a href="play.html" class="nav-link hover:text-ink transition">Some Play</a>
@@ -53,7 +55,7 @@
       </div>
       <div class="flex md:hidden items-center gap-3">
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
-        <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu" aria-expanded="false">
+        <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded', this.classList.contains('open') ? 'true' : 'false')" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       </div>
@@ -70,10 +72,9 @@
   <!-- Header -->
   <section class="pt-24 pb-2 px-6">
     <div class="max-w-6xl mx-auto">
-      <!-- OPTION 2: Pull quote style -->
-      <div class="mb-4 border-b border-ink/5 pb-4" id="option2">
+      <div class="mb-4 border-b border-ink/5 pb-4">
         <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Lucy Mossakowski</h1>
-        <p class="text-xl md:text-2xl text-ink-light font-medium mt-6 leading-snug max-w-3xl">I make intricate systems feel simple and intuitive.</p>
+        <p class="text-xl text-ink-light mt-6 leading-snug max-w-3xl">I make intricate systems feel simple and intuitive.</p>
         <p class="text-ink-light mt-4 leading-relaxed">User Experience Designer with 7+ years of experience designing internal tools and optimising complex workflows. My approach is grounded in research, design thinking, and continuous iteration. With a background in service design and a strong interest in how people interact with systems, I bring clarity and empathy to messy problems and thrive in collaborative, cross-functional teams.</p>
         <p class="text-ink-light mt-3 leading-relaxed">Beyond my core design work, I lead the UK Neurodiversity Charter at Zynga. In my spare time, I enjoy running, playing cosy games, and diving into D&amp;D campaigns - anything that blends creative problem-solving with storytelling.</p>
         <div class="flex flex-wrap items-center gap-4 mt-4">
@@ -81,7 +82,7 @@
           <span class="text-ink-muted no-print">·</span>
           <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="inline-flex items-center gap-1 text-sm font-medium text-brand hover:underline no-print" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           <span class="text-ink-muted no-print">·</span>
-          <button onclick="window.print()" class="no-print btn-outline">Download PDF</button>
+          <a href="LucyMossakowski_CV.pdf" target="_blank" rel="noopener noreferrer" download="LucyMossakowski_CV.pdf" class="no-print btn-outline">Download PDF</a>
         </div>
       </div>
     </div>
@@ -98,12 +99,12 @@
           <div>
             <h3 class="font-semibold text-lg">Senior UX Designer · Zynga</h3>
             <ul class="text-ink-light mt-2 leading-relaxed space-y-1.5 list-disc list-outside ml-4">
-              <li>Conduct user research and interviews across multiple projects and user groups, translating findings into design decisions that changed how teams worked.</li>
-              <li>Design and iterate wireframes, prototypes, and user flows for complex internal tools, including prototyping directly in code to communicate design intent more effectively with engineering.</li>
-              <li>Author team resources including user archetype definitions, design spec templates, and research guidelines.</li>
-              <li>Facilitate design reviews with product and engineering, adapting solutions to technical constraints while preserving user experience goals.</li>
-              <li>Mentor junior designers across teams through design critiques and knowledge-sharing, contributing to a stronger collective design standard.</li>
-              <li>Lead the UK Neurodiversity Charter at Zynga, advocating for inclusive practices across the business.</li>
+              <li>Conduct user research across projects, establishing findings into problem statements that changed how teams worked, effectively reducing handover time and unnecessary iteration.</li>
+              <li>Reduced post-development review effort by prototyping directly in code for complex organisational tools, making design intent clearer to engineering than static mockup handoffs.</li>
+              <li>Raised the standard and appreciation of research-led practice across the design team by authoring shared resources: user archetype definitions, design spec templates, and research guidelines.</li>
+              <li>Turned cross-functional relationships into trusted partnerships by facilitating design reviews with product and engineering, consistently finding solutions that met technical constraints without compromising on user needs.</li>
+              <li>Raised collective design quality across teams by mentoring junior designers through critiques and knowledge-sharing sessions.</li>
+              <li>Lead the UK Neurodiversity Charter at Zynga, driving awareness of inclusive practices across the business.</li>
             </ul>
           </div>
         </div>
@@ -113,11 +114,11 @@
           <div>
             <h3 class="font-semibold text-lg">Senior UX Designer · NaturalMotion</h3>
             <ul class="text-ink-light mt-2 leading-relaxed space-y-1.5 list-disc list-outside ml-4">
-              <li>Took full end-to-end ownership of UX across multiple simultaneous features, delivering style guides, wireframes, and user flows from brief to handoff.</li>
-              <li>Used analytics and usability testing to iterate on cross-platform designs, improving engagement while maintaining accessibility standards.</li>
-              <li>Collaborated with PMs, artists, and engineers across disciplines to ship cohesive experiences on mobile and console, applying platform-specific interaction patterns and HCI principles throughout.</li>
+              <li>Maintained quality from brief through to handoff while managing multiple simultaneous features, taking full end-to-end UX ownership including design systems, user flows, and wireframes.</li>
+              <li>Improved user engagement by applying analytics and usability testing to iterate designs, maintaining accessibility standards throughout.</li>
+              <li>Shipped cohesive cross-platform experiences by collaborating with PMs, artists, and engineers, applying platform-specific interaction patterns across touchpoints.</li>
             </ul>
-            <p class="text-ink-light mt-2 leading-relaxed text-sm italic">Transferred internally to Zynga in January 2023.</p>
+            <p class="text-sm text-ink-muted mt-2">Transferred internally to Zynga in January 2023</p>
           </div>
         </div>
 
@@ -126,9 +127,9 @@
           <div>
             <h3 class="font-semibold text-lg">UX Designer · NaturalMotion</h3>
             <ul class="text-ink-light mt-2 leading-relaxed space-y-1.5 list-disc list-outside ml-4">
-              <li>Designed cross-platform experiences, applying interaction design and HCI principles to improve usability.</li>
-              <li>Rapidly translated feature specs into high-quality design solutions, consistently balancing user needs with business constraints.</li>
-              <li>Partnered with multi-disciplinary teams, incorporating research insights and stakeholder feedback into iterative, data-informed design.</li>
+              <li>Improved usability across platforms by grounding design in interaction design and HCI principles.</li>
+              <li>Consistently balanced user needs with business constraints, translating feature specs into high-quality design solutions under tight timelines.</li>
+              <li>Maintained a data-informed design practice by incorporating research insights and stakeholder feedback into iterative design across multi-disciplinary projects.</li>
             </ul>
           </div>
         </div>
@@ -138,8 +139,8 @@
           <div>
             <h3 class="font-semibold text-lg">Junior Product Designer · Inspiral Design Ltd</h3>
             <ul class="text-ink-light mt-2 leading-relaxed space-y-1.5 list-disc list-outside ml-4">
-              <li>Designed brand identity and digital materials for multiple client accounts, from initial concept through to final delivery.</li>
-              <li>Applied design thinking and client-focused problem solving across briefs ranging from print campaigns to digital assets.</li>
+              <li>Delivered brand identity and digital materials for multiple client accounts simultaneously, managing each from initial concept through to final delivery.</li>
+              <li>Solved varied client briefs across print campaigns and digital assets, applying design thinking to meet both creative and commercial objectives.</li>
             </ul>
           </div>
         </div>
@@ -177,7 +178,7 @@
 
       <div class="space-y-6">
         <div>
-          <h3 class="text-sm font-semibold text-ink mb-2">Collaboration &amp; Communication</h3>
+          <h3 class="text-lg font-semibold mb-2">Collaboration &amp; Communication</h3>
           <div class="flex flex-wrap gap-2">
             <span class="tag" style="background:#05966914;color:#059669">Cross-Functional Collaboration</span>
             <span class="tag" style="background:#05966914;color:#059669">Design Workshops</span>
@@ -186,7 +187,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-ink mb-2">Product Thinking</h3>
+          <h3 class="text-lg font-semibold mb-2">Product Thinking</h3>
           <div class="flex flex-wrap gap-2">
             <span class="tag" style="background:#DC262614;color:#DC2626">Business &amp; User Alignment</span>
             <span class="tag" style="background:#DC262614;color:#DC2626">Data-Driven Iteration</span>
@@ -195,7 +196,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-ink mb-2">Service Design</h3>
+          <h3 class="text-lg font-semibold mb-2">Service Design</h3>
           <div class="flex flex-wrap gap-2">
             <span class="tag" style="background:#0068C814;color:#0068C8">Accessibility</span>
             <span class="tag" style="background:#0068C814;color:#0068C8">Cross-Platform Design</span>
@@ -207,7 +208,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-ink mb-2">Tools &amp; Systems</h3>
+          <h3 class="text-lg font-semibold mb-2">Tools &amp; Systems</h3>
           <div class="flex flex-wrap gap-2">
             <span class="tag" style="background:#D9730614;color:#D97306">AI</span>
             <span class="tag" style="background:#D9730614;color:#D97306">Design Systems</span>
@@ -215,7 +216,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-ink mb-2">User Research &amp; Usability Testing</h3>
+          <h3 class="text-lg font-semibold mb-2">User Research &amp; Usability Testing</h3>
           <div class="flex flex-wrap gap-2">
             <span class="tag" style="background:#6B46C114;color:#6B46C1">A/B Testing</span>
             <span class="tag" style="background:#6B46C114;color:#6B46C1">Qualitative Research</span>
@@ -246,7 +247,7 @@
 
   <!-- Footer -->
   <footer class="border-t border-ink/5 py-8 px-6">
-    <div class="max-w-6xl mx-auto flex justify-center gap-4 text-xs text-ink-muted">
+    <div class="max-w-6xl mx-auto flex justify-center gap-4 text-sm text-ink-muted">
         <a href="mailto:lucymossa@gmail.com" class="hover:text-ink hover:underline transition">lucymossa@gmail.com</a>
         <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="hover:text-ink hover:underline transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>

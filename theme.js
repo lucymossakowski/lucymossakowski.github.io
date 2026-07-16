@@ -27,5 +27,11 @@
     document.querySelectorAll('.theme-toggle').forEach(function(btn) { btn.innerHTML = html; });
   };
 
-  document.addEventListener('DOMContentLoaded', updateThemeIcons);
+  document.addEventListener('DOMContentLoaded', function() {
+    updateThemeIcons();
+    var isDark = root.classList.contains('dark');
+    document.querySelectorAll('[data-modal-header]').forEach(function(el) {
+      el.style.background = isDark ? 'rgba(26,26,26,0.8)' : 'rgba(248,247,245,0.8)';
+    });
+  });
 })();

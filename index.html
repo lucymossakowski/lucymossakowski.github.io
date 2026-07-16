@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucy Mossakowski</title>
+  <title>Lucy Mossakowski — Product Designer</title>
+  <meta name="description" content="Portfolio of Lucy Mossakowski, Senior Product Designer specialising in complex operational tools and workflows.">
+  <meta property="og:title" content="Lucy Mossakowski — Product Designer">
+  <meta property="og:description" content="Senior Product Designer specialising in complex operational tools and workflows.">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -40,12 +44,6 @@
     }
     .case-img { cursor: zoom-in; transition: opacity 0.15s; }
     .case-img:hover { opacity: 0.85; }
-
-    /* Placeholder content for locked modals */
-    .placeholder-block { border-radius: 0.75rem; background: var(--ink); opacity: 0.1; }
-    .placeholder-text { border-radius: 0.375rem; background: var(--ink); opacity: 0.12; height: 0.75rem; }
-    .dark .placeholder-block { opacity: 0.07; }
-    .dark .placeholder-text { opacity: 0.09; }
   </style>
 </head>
 <body class="bg-surface text-ink font-sans antialiased">
@@ -56,7 +54,7 @@
   <!-- Nav -->
   <nav class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur border-b border-ink/5 px-6" aria-label="Main navigation">
     <div class="max-w-6xl mx-auto flex items-center justify-between h-14">
-      <a href="index.html" class="text-sm font-semibold tracking-tight text-ink">Lucy Mossakowski</a>
+      <a href="index.html" class="font-semibold uppercase tracking-widest text-ink-muted">Lucy Mossakowski</a>
       <div class="hidden md:flex items-center gap-6 text-sm text-ink-muted">
         <a href="index.html" class="nav-link text-ink" aria-current="page">All Work</a>
         <a href="play.html" class="nav-link hover:text-ink transition">Some Play</a>
@@ -65,7 +63,7 @@
       </div>
       <div class="flex md:hidden items-center gap-3">
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
-        <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu" aria-expanded="false">
+        <button class="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded', this.classList.contains('open') ? 'true' : 'false')" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       </div>
@@ -80,40 +78,40 @@
   </div>
 
   <!-- Hero -->
-  <section class="min-h-screen flex items-center px-6">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-ink">I make intricate systems feel simple and intuitive.</h1>
+  <section class="relative flex items-center px-6 overflow-hidden bg-surface" style="margin-top:3.5rem;min-height:calc(100vh - 3.5rem);">
+    <canvas id="hero-canvas" class="absolute inset-0 pointer-events-none" style="display:block;width:100%;height:100%;"></canvas>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight">I make intricate systems feel simple and intuitive.</h1>
       <p class="mt-6 text-xl text-ink-light max-w-xl leading-relaxed">Designing products that simplify complex operational workflows through research, design thinking, and continuous iteration.</p>
-      <div class="flex justify-center md:justify-start items-center gap-4 mt-10">
+      <div class="flex justify-start items-center gap-4 mt-10">
         <a href="#work" class="no-print inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline">See the work ↓</a>
-        <button onclick="window.print()" class="no-print btn-outline">Download PDF</button>
       </div>
     </div>
   </section>
 
   <!-- All Work -->
-  <section id="work" class="px-6 pb-10">
+  <section id="work" class="px-6 pt-16 pb-10">
     <div class="max-w-6xl mx-auto">
 
       <!-- Project 1: Payments -->
-      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center mb-24 cursor-pointer group" onclick="openModal('modal-3')" role="button" tabindex="0" aria-label="View Payments case study" onkeydown="if(event.key==='Enter')openModal('modal-3')">
+      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center mb-24 cursor-pointer group" onclick="openModal('modal-3')" role="button" tabindex="0" aria-label="View Payments Admin case study" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal-3');}">
         <div class="rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
           <img src="images/payments-hero.png" alt="Payments project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
         </div>
         <div>
           <div class="flex flex-wrap gap-2 mb-4">
-            <span class="tag text-center" style="background:#6B46C114;color:#6B46C1;">User Research</span>
+            <span class="tag text-center" style="background:#6B46C114;color:#6B46C1;">User Interviews</span>
             <span class="tag text-center" style="background:#0068C814;color:#0068C8;">Information Architecture</span>
-            <span class="tag text-center" style="background:#DC262614;color:#DC2626;">Design Thinking</span>
+            <span class="tag text-center" style="background:#05966914;color:#059669;">Stakeholder Alignment</span>
           </div>
-          <h3 class="text-2xl font-bold">Payments</h3>
-          <p class="text-ink-light mt-3 leading-relaxed">Redesigning an internal tool used across teams, such as release operations and customer support, with the focus on simplifying complex workflows and reducing reliance on external teams.</p>
+          <h3 class="text-2xl font-bold">Payments Admin</h3>
+          <p class="text-ink-light mt-3 leading-relaxed">Redesigning a payments and catalogue management platform used by operations, customer support, and release teams, with a focus on simplifying complex workflows and reducing reliance on manual processes.</p>
           <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
         </div>
       </div>
 
       <!-- Project 2: LocManager -->
-      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter')openModal('modal-2')">
+      <div class="project-card grid md:grid-cols-2 gap-6 md:gap-12 items-center cursor-pointer group" onclick="openModal('modal-2')" role="button" tabindex="0" aria-label="View LocManager case study" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal-2');}">
         <div class="md:order-2 rounded-xl overflow-hidden bg-ink/5 group-hover:shadow-lg transition-shadow">
           <img src="images/locmanager-hero.png" alt="LocManager project preview" class="w-full group-hover:scale-[1.02] transition-transform duration-500">
         </div>
@@ -121,10 +119,10 @@
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="tag text-center" style="background:#0068C814;color:#0068C8;">Prototypes</span>
             <span class="tag text-center" style="background:#05966914;color:#059669;">Cross-Functional Collaboration</span>
-            <span class="tag text-center" style="background:#DC262614;color:#DC2626;">Data-Driven Iteration</span>
+            <span class="tag text-center" style="background:#DC262614;color:#DC2626;">Live Service Optimisation</span>
           </div>
           <h3 class="text-2xl font-bold">LocManager</h3>
-          <p class="text-ink-light mt-3 leading-relaxed">Inheriting an internal localisation tool and iterating on the design to resolve UX issues, improve workflows, and consolidate multiple tools into one platform.</p>
+          <p class="text-ink-light mt-3 leading-relaxed">Inheriting a localisation management platform and iterating on the design to resolve UX issues, improve workflows, and consolidate multiple tools into one.</p>
           <p class="text-sm font-medium text-brand mt-4 group-hover:underline">View case study →</p>
         </div>
       </div>
@@ -133,82 +131,15 @@
   </section>
 
   <!-- Modal 3: Payments -->
-  <div id="modal-3" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="Payments case study">
+  <div id="modal-3" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="Payments Admin case study">
     <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-3')"></div>
     <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
       <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between z-30" style="background:var(--surface);">
-        <h2 class="font-semibold">Payments</h2>
+        <h2 class="text-2xl font-bold">Payments Admin</h2>
         <button onclick="closeModal('modal-3')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
       </div>
       <div class="max-w-3xl mx-auto px-6 py-12">
         <div data-case-content></div>
-      </div>
-      <div data-case-lock class="relative">
-        <!-- Blurred placeholder skeleton — in normal flow so it creates scroll height -->
-        <div style="filter:blur(6px);-webkit-filter:blur(6px);pointer-events:none;" aria-hidden="true">
-          <div class="max-w-3xl mx-auto px-6 py-12">
-            <!-- Hero image -->
-            <div class="placeholder-block w-full h-64 mb-4"></div>
-            <div class="placeholder-text w-48 mb-10"></div>
-            <!-- Problem section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-3/4 mb-4"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-5/6 mb-10"></div>
-            <!-- Process section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="space-y-3 mb-10">
-              <div class="placeholder-block w-full h-20"></div>
-              <div class="placeholder-block w-full h-20"></div>
-              <div class="placeholder-block w-full h-20"></div>
-            </div>
-            <!-- What users said -->
-            <div class="placeholder-text w-32 mb-3"></div>
-            <div class="placeholder-block w-full h-56 mb-10"></div>
-            <!-- Solution section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-              <div class="placeholder-block h-48"></div>
-              <div class="placeholder-block h-48"></div>
-            </div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-3/4 mb-4"></div>
-            <div class="placeholder-block w-full h-64 mb-10"></div>
-            <!-- Outcome section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="placeholder-block w-full h-20 mb-3"></div>
-            <div class="space-y-3 mb-10">
-              <div class="placeholder-block w-full h-16"></div>
-              <div class="placeholder-block w-full h-16"></div>
-            </div>
-            <!-- Reflection section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-2/3 mb-8"></div>
-          </div>
-        </div>
-        <!-- Password overlay — fixed to modal viewport, shifted up 100px -->
-        <div class="absolute inset-0 flex items-center justify-center z-20" style="position:fixed;top:3rem;bottom:0;">
-          <div class="text-center max-w-xs w-full px-6" style="margin-top:-100px;">
-            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink/5 mb-4">
-              <svg class="w-5 h-5 text-ink-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <p class="text-sm text-ink-muted mb-4">This case study is password protected.</p>
-            <form onsubmit="return unlockCaseStudy(event, 'modal-3')" class="flex gap-2">
-              <label for="pw-modal-3" class="sr-only">Password</label>
-              <div class="flex-1 flex flex-col">
-                <input id="pw-modal-3" type="password" placeholder="Enter Password" autocomplete="off" class="pw-input px-3 py-2 text-sm border rounded-lg bg-transparent text-ink placeholder:text-ink-light focus:outline-none">
-                <p class="pw-error text-sm mt-3 hidden text-center" style="color:#DC2626;">Incorrect password</p>
-              </div>
-              <button type="submit" class="btn-outline self-start">Enter</button>
-            </form>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -218,82 +149,11 @@
     <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('modal-2')"></div>
     <div data-modal-panel class="absolute inset-x-0 bottom-0 top-12 rounded-t-xl overflow-y-auto animate-slide-up" style="background:var(--surface);">
       <div data-modal-header class="sticky top-0 backdrop-blur border-b border-ink/5 px-6 py-4 flex items-center justify-between z-30" style="background:var(--surface);">
-        <h2 class="font-semibold">LocManager</h2>
+        <h2 class="text-2xl font-bold">LocManager</h2>
         <button onclick="closeModal('modal-2')" aria-label="Close" class="text-ink-muted hover:text-ink text-2xl leading-none">&times;</button>
       </div>
       <div class="max-w-3xl mx-auto px-6 py-12">
         <div data-case-content></div>
-      </div>
-      <div data-case-lock class="relative">
-        <!-- Blurred placeholder skeleton — in normal flow so it creates scroll height -->
-        <div style="filter:blur(6px);-webkit-filter:blur(6px);pointer-events:none;" aria-hidden="true">
-          <div class="max-w-3xl mx-auto px-6 py-12">
-            <!-- Hero image -->
-            <div class="placeholder-block w-full h-64 mb-4"></div>
-            <div class="placeholder-text w-48 mb-10"></div>
-            <!-- Problem section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-3/4 mb-10"></div>
-            <!-- Process section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="space-y-3 mb-10">
-              <div class="placeholder-block w-full h-20"></div>
-              <div class="placeholder-block w-full h-20"></div>
-              <div class="placeholder-block w-full h-20"></div>
-            </div>
-            <div class="placeholder-block w-full h-64 mb-10"></div>
-            <!-- Solution section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-3/4 mb-10"></div>
-            <!-- Status dropdown -->
-            <div class="placeholder-text w-32 mb-3"></div>
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div class="placeholder-block h-48"></div>
-              <div class="placeholder-block h-48"></div>
-            </div>
-            <!-- Notification settings -->
-            <div class="placeholder-text w-36 mb-3"></div>
-            <div class="grid grid-cols-2 gap-4 mb-10">
-              <div class="placeholder-block h-48"></div>
-              <div class="placeholder-block h-48"></div>
-            </div>
-            <!-- Outcome section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="placeholder-block w-full h-20 mb-3"></div>
-            <div class="space-y-3 mb-10">
-              <div class="placeholder-block w-full h-16"></div>
-              <div class="placeholder-block w-full h-16"></div>
-            </div>
-            <!-- Reflection section -->
-            <div class="placeholder-text w-24 mb-3"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-full mb-2"></div>
-            <div class="placeholder-text w-2/3 mb-8"></div>
-          </div>
-        </div>
-        <!-- Password overlay — fixed to modal viewport, shifted up 100px -->
-        <div class="absolute inset-0 flex items-center justify-center z-20" style="position:fixed;top:3rem;bottom:0;">
-          <div class="text-center max-w-xs w-full px-6" style="margin-top:-100px;">
-            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink/5 mb-4">
-              <svg class="w-5 h-5 text-ink-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <p class="text-sm text-ink-muted mb-4">This case study is password protected.</p>
-            <form onsubmit="return unlockCaseStudy(event, 'modal-2')" class="flex gap-2">
-              <label for="pw-modal-2" class="sr-only">Password</label>
-              <div class="flex-1 flex flex-col">
-                <input id="pw-modal-2" type="password" placeholder="Enter Password" autocomplete="off" class="pw-input px-3 py-2 text-sm border rounded-lg bg-transparent text-ink placeholder:text-ink-light focus:outline-none">
-                <p class="pw-error text-sm mt-3 hidden text-center" style="color:#DC2626;">Incorrect password</p>
-              </div>
-              <button type="submit" class="btn-outline self-start">Enter</button>
-            </form>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -305,31 +165,92 @@
 
   <!-- Footer -->
   <footer class="border-t border-ink/5 py-8 px-6">
-    <div class="max-w-6xl mx-auto flex justify-center gap-4 text-xs text-ink-muted">
-        <a href="mailto:lucymossa@gmail.com" class="hover:text-ink hover:underline transition">lucymossa@gmail.com</a>
-        <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="hover:text-ink hover:underline transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <div class="max-w-6xl mx-auto flex justify-center gap-4 text-sm text-ink-muted">
+      <a href="mailto:lucymossa@gmail.com" class="hover:text-ink hover:underline transition">lucymossa@gmail.com</a>
+      <a href="https://www.linkedin.com/in/lucy-mossakowski/" class="hover:text-ink hover:underline transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </footer>
 
   <script src="case-studies.js"></script>
   <script>
-    // Password config (same salt/hash as before)
-    var SALT = '852b229267504da2d39ffcc37e5b2fc6';
-    var HASH = '2fb809dd8097ba5fac28c02ee48355fbf079c3b386ad2e124f0e301d3f220a2e';
-    var AUTH_KEY = 'portfolio-auth';
+  (function() {
+    var canvas = document.getElementById('hero-canvas');
+    var ctx = canvas.getContext('2d');
+    var dots = [];
+    var DOT_COUNT = 220;
 
-    function isAuthenticated() {
-      return sessionStorage.getItem(AUTH_KEY) === HASH;
+    function dark() { return document.documentElement.classList.contains('dark'); }
+    function palette() { return dark() ? ['#FFFFFF', '#808080'] : ['#1A1A1A', '#888888']; }
+    function dotOpacity() { return dark() ? Math.random() * 0.35 + 0.2 : Math.random() * 0.15 + 0.05; }
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     }
 
+    function makeDot() {
+      var cols = palette();
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2.5 + 0.5,
+        dx: (Math.random() - 0.5) * 0.35,
+        dy: (Math.random() - 0.5) * 0.35,
+        opacity: dotOpacity(),
+        colour: cols[Math.floor(Math.random() * cols.length)]
+      };
+    }
+
+    function refreshColours() {
+      var cols = palette();
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].colour = cols[Math.floor(Math.random() * cols.length)];
+        dots[i].opacity = dotOpacity();
+      }
+    }
+
+    function init() {
+      resize();
+      dots = [];
+      for (var i = 0; i < DOT_COUNT; i++) dots.push(makeDot());
+    }
+
+    window.addEventListener('resize', resize);
+
+    var _origToggle = window.toggleTheme;
+    window.toggleTheme = function() {
+      _origToggle();
+      refreshColours();
+    };
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < dots.length; i++) {
+        var d = dots[i];
+        d.x += d.dx;
+        d.y += d.dy;
+        if (d.x + d.r > canvas.width || d.x - d.r < 0) d.dx = -d.dx;
+        if (d.y + d.r > canvas.height || d.y - d.r < 0) d.dy = -d.dy;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        ctx.globalAlpha = d.opacity;
+        ctx.fillStyle = d.colour;
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    init();
+    animate();
+  })();
+  </script>
+  <script>
     function injectContent(modalId) {
       var modal = document.getElementById(modalId);
       var contentEl = modal.querySelector('[data-case-content]');
-      var lockEl = modal.querySelector('[data-case-lock]');
-      if (!lockEl) return; // already unlocked
-      if (window.caseStudyContent && window.caseStudyContent[modalId]) {
+      if (contentEl && !contentEl.hasChildNodes() && window.caseStudyContent && window.caseStudyContent[modalId]) {
         contentEl.innerHTML = window.caseStudyContent[modalId];
-        lockEl.remove();
       }
     }
 
@@ -337,42 +258,14 @@
       var modal = document.getElementById(id);
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      if (isAuthenticated()) {
-        injectContent(id);
-      } else {
-        // Focus the password input
-        var input = modal.querySelector('input[type="password"]');
-        if (input) setTimeout(function() { input.focus(); }, 100);
-      }
+      var panel = modal.querySelector('[data-modal-panel]');
+      if (panel) panel.scrollTop = 0;
+      injectContent(id);
     }
 
     function closeModal(id) {
       document.getElementById(id).classList.add('hidden');
       document.body.style.overflow = '';
-    }
-
-    async function unlockCaseStudy(e, modalId) {
-      e.preventDefault();
-      var modal = document.getElementById(modalId);
-      var input = modal.querySelector('input[type="password"]');
-      var error = modal.querySelector('.pw-error');
-      var pw = input.value;
-      var data = new TextEncoder().encode(SALT + pw);
-      var buf = await crypto.subtle.digest('SHA-256', data);
-      var hex = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
-      if (hex === HASH) {
-        sessionStorage.setItem(AUTH_KEY, HASH);
-        // Unlock this modal and any other open modal
-        injectContent(modalId);
-        document.querySelectorAll('[id^="modal-"]').forEach(function(m) {
-          if (!m.classList.contains('hidden')) injectContent(m.id);
-        });
-      } else {
-        error.classList.remove('hidden');
-        input.value = '';
-        input.focus();
-      }
-      return false;
     }
 
     document.addEventListener('keydown', function(e) {
